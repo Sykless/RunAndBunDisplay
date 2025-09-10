@@ -1,0 +1,34 @@
+PREMIERE INSTALLATION
+	1 - Dézipper l'archive "RunAndBunDisplay.zip" dans un dossier de votre choix
+			-> Éviter les dossiers protégés comme C:\Program Files, privilégier un dossier quelque part dans Documents par exemple
+			-> Éviter de déplacer/renommer le dossier par la suite
+			-> Éviter de déplacer le contenu du dossier dans un autre dossier
+
+	2 - Lancer "RunAndBunDisplay.exe"
+			-> La première exécution peut ouvrir une fenêtre et la fermer instantanément, c'est un fonctionnement normal
+			-> Le programme est considéré comme installé lorsque la fenêtre reste ouverte et que le message "Run&BunDisplay en cours d'exécution..." s'affiche dans la console
+
+	3 - Redémarrer mGBA s'il est en cours d'exécution
+
+	4 - Ajouter le script "RunAndBunDisplay.lua" à mGBA
+			-> Aller dans "Outils" -> "Scripting"
+			-> Dans la fenêtre qui s'ouvre, aller dans "File" -> "Load script" et sélectionner le script "RunAndBunDisplay.lua"
+			-> Le programme est considéré comme en cours d'exécution lorsque le message "Run&BunDisplay en cours d'exécution..." s'affiche dans mGBA
+
+	5 - Vérifier le bon fonctionnement
+			-> Lancer la ROM Pokémon Run&Bun dans mGBA
+			-> Dans le dossier d'installation de RunAndBunDisplay, un dossier "outputImage" doit s'être créé, contenant les images party.png, box.png et dead.png
+
+	6 - Ajouter les images dans OBS
+			-> Dans OBS, ajouter une source de type "Image" et choisir une des trois images générées dans le dossier "outputImage"
+			-> En agrandissant l'image elle paraîtra probablement un peu flou, dans ce cas faire clic droit sur l'image, "Scale Filtering" puis "Point"
+			-> Normalement à chaque mise à jour de l'équipe dans la ROM Run&Bun, l'image devrait se mettre à jour dans la scène OBS
+
+
+UTILISATION
+	A chaque utilisation il faudra simplement lancer le programme "RunAndBunDisplay.exe" et ajouter le script "RunAndBunDisplay.lua" à mGBA, c'est tout !
+
+
+CONTACT
+	Discord : Sykless
+	Twitch : TristanPelleteuse
