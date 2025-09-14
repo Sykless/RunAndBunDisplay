@@ -1,3 +1,9 @@
 -- 1 to enable, 0 to disable --
+
+-- Party, Box, Dead
 DISPLAY_SPRITE_LEVELUP=1
 DISPLAY_SPRITE_ITEMS=1
+
+-- Trainer Card
+DISPLAY_TRAINER_ITEMS=1
+DISPLAY_TRAINER_BACKGROUND=1

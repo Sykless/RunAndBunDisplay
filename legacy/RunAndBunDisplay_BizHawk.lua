@@ -17,6 +17,69 @@ local defeatedTrainersStart = 0X020262DD
 local defeatedTrainersEnd = 0x020263ED
 local pickedStarterAddress = 0x02026442 -- 0 Turtwig / 1 Chimchar / 2 Piplup
 
+local levelCapThreasholds = {0x30, 0x70, 0x81, 0x87, 0xF0, 0x83, 0x38, 0x8B, 0x3A, 0x8B, 0x8F, 0xB0, 0x40, 0x9F, 0x90, 0x11, 0xC0, 0x19, 0xBF, 0x06, 0xFF, 0x10, 0xFF}
+local levelCapValues =      {  17,   21,   25,   32,   35,   38,   42,   48,   54,   57,   65,   66,   69,   73,   76,   79,   81,   85,   89,   91,   95,   99,  100}
+local levelCapAddresses =   {
+	0x020263EC, -- Route 104 Aqua Grunt
+	0x020263EC, -- Museum Aqua Grunts
+	0x020263DD, -- Leader Brawly 
+	0x020263DC, -- Leader Roxanne
+	0x020263EC, -- Route 117 Chelle
+	0x020263DD, -- Leader Wattson
+	0x020263ED, -- Cycling Road Rival
+	0x020263DD, -- Leader Norman 
+	0x020263ED, -- Fallarbor Town Vito
+	0x020262E1, -- Mt. Chimney Maxie
+	0x020263DD, -- Leader Flannery
+	0x020262E2, -- Weather Institute Shelly
+	0x020262DD, -- Route 119 Rival
+	0x020263DD, -- Leader Winona
+	0x020262F4, -- Lilycove City Rival
+	0x020262EA, -- Mt. Pyre Archie
+	0x020262DD, -- Magma Hideout Maxie
+	0x020262DE, -- Aqua Hideout Matt
+	0x020263DD, -- Leaders Tate & Liza
+	0x020262E0, -- Seafloor Cavern Archie
+	0x020263DD, -- Leader Juan
+	0x020263E6, -- Victory Road Vito
+	0x020263DF, -- Champion Wallace
+}
+
+local curve = {3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,4,4,0,0,4,4,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,5,5,3,3,3,3,3,3,3
+		,3,3,3,3,3,5,5,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,3,3,3,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,5,5,4,0,0,0,0,0,0,5,5,0,0,0,0,0,5,5,5,5,5,0,0,0,0
+		,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,0,0,0,0,4,4,4,4,0,5,5,0,4,4,4,4,0,0,3,3,3,3,4,4,0,3,3,3,3,4,3,3,0,0,0,0,0,3,0,4,0,0,0,0
+		,0,0,3,0,4,4,0,0,3,5,3,0,0,0,0,5,5,4,0,0,4,5,5,5,5,0,0,0,0,5,4,0,0,0,0,0,5,4,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,3,3,3,3
+		,3,3,3,3,0,0,5,5,5,0,0,2,2,5,5,5,1,1,1,3,3,3,2,2,4,0,4,4,3,4,5,5,5,0,0,5,5,0,0,1,2,3,2,2,5,5,2,2,0,0,0,4,4,4,3,3,3,3,3,1,1,1,2,4,4,0,0,2,2
+		,0,0,1,1,1,1,1,1,0,3,4,4,4,4,5,4,3,0,0,0,3,3,3,1,1,1,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,3,3,0,0,3,3,3,3,3,3,3,1,1,1,1
+		,0,0,0,3,3,0,0,0,0,0,0,0,4,2,2,0,0,4,3,4,4,4,0,0,0,0,0,0,4,3,0,5,5,5,5,3,3,5,5,5,5,0,0,5,1,1,5,5,5,3,0,0,5,0,0,0,4,0,0,0,3,5,0,5,0,4,0,0,5
+		,5,5,5,5,5,5,5,5,5,5,5,3,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0,0,0,0,0,0,0,4,4,3,3,3,0,0,3,3,3,0,0,0,0,4,3,3,3,3,3,3,0,0,3,3,3,3,3,3,0,0,0,0
+		,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,4,4,3,3,3,3,3,3,0,0,5,5,5,0,0,0,0,0,0,0,0,0,4,0,0,0,0,3,3,3,5,5,5,0,0,3,3,3,5,5,5,0,0,0,0,0,0
+		,3,3,0,0,0,0,0,0,5,5,5,5,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,5,5,5,5,4,0,0,0,0,0,0,0,0,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0
+		,0,0,0,0,3,3,3,4,5,5,0,0,0,0,4,5,5,0,5,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0
+		,0,4,4,0,0,0,0,0,0,4,4,3,3,3,1,1,1,0,0,0,5,5,3,3,0,0,3,3,0,0,5,5,5,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,5,5,4,0,0,0,5,5,5,5,0,5,5,5,5,5,5,5,5,5,5
+		,5,5,5,5,5,0,0,0,3,0,5,3,3,3,3,0,3,3,0,3,0,5,5,5,5,5,3,0,0,5,5,5,3,3,3,5,3,4,5,0,5,5,0,1,4,3,0,5,5,5,5,0,5,3,5,5,4,5,5,5,5,0,0,0,0,0,0,0,0
+		,0,0,0,3,3,3,0,0,5,0,0,0,0,0,0,0,0,0,5,5,5,0,4,0,0,3,3,0,0,5,5,0,0,3,0,3,3,0,3,3,5,5,5,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,3,3,0,0,0,0,0,0,5,5
+		,5,5,5,5,5,5,5,5,5,5,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,0,0
+		,0,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,3,0,0,0,0,0,0,0,0,0,0,5,4,0,5,5,5,5,5,5,5,5}
+
+function getLevelCap()
+	local levelCap = 12 -- Default level cap
+
+	for levelId = 1, #levelCapAddresses do
+		currentThreashold = memory.read_u8(levelCapAddresses[levelId], "System Bus")
+		levelThreashold = levelCapThreasholds[levelId]
+
+		-- Check each threashold until one is not high enough
+		if (currentThreashold >= levelThreashold) then
+			levelCap = levelCapValues[levelId]
+		else
+			return levelCap
+		end
+	end
+end
+
 function slowCurve(n)
     return math.floor((5*(n^3))/4)
 end
@@ -69,18 +132,26 @@ function expRequired(species,level)
 	if (expCurve == 5) then return slowCurve(level) end
 end
 
+function readRange(address, length)
+  local bytes = {}
+  for i=0,length-1 do
+    bytes[i] = memory.read_u8(address + i, "System Bus")
+  end
+  return bytes
+end
+
 function readBoxMon(address)
 	local mon = {}
-	mon.personality = emu:read32(address + 0)
-	mon.otId = emu:read32(address + 4)
-	mon.nickname = emu:readRange(address + 8, monNameLength)
-	mon.language = emu:read8(address + 18)
-	local flags = emu:read8(address + 19)
+	mon.personality = memory.read_u32_le(address + 0, "System Bus")
+	mon.otId = memory.read_u32_le(address + 4, "System Bus")
+	mon.nickname = readRange(address + 8, monNameLength)
+	mon.language = memory.read_u8(address + 18, "System Bus")
+	local flags = memory.read_u8(address + 19, "System Bus")
 	mon.isBadEgg = flags & 1
 	mon.hasSpecies = (flags >> 1) & 1
 	mon.isEgg = (flags >> 2) & 1
-	mon.otName = emu:readRange(address + 20, playerNameLength)
-	mon.markings = emu:read8(address + 27)
+	mon.otName = readRange(address + 20, playerNameLength)
+	mon.markings = memory.read_u8(address + 27, "System Bus")
 
 	local key = mon.otId ~ mon.personality
 	local substructSelector = {
@@ -117,10 +188,10 @@ function readBoxMon(address)
 	local ss3 = {}
 
 	for i = 0, 2 do
-		ss0[i] = emu:read32(address + 32 + pSel[1] * 12 + i * 4) ~ key
-		ss1[i] = emu:read32(address + 32 + pSel[2] * 12 + i * 4) ~ key
-		ss2[i] = emu:read32(address + 32 + pSel[3] * 12 + i * 4) ~ key
-		ss3[i] = emu:read32(address + 32 + pSel[4] * 12 + i * 4) ~ key
+		ss0[i] = memory.read_u32_le(address + 32 + pSel[1] * 12 + i * 4, "System Bus") ~ key
+		ss1[i] = memory.read_u32_le(address + 32 + pSel[2] * 12 + i * 4, "System Bus") ~ key
+		ss2[i] = memory.read_u32_le(address + 32 + pSel[3] * 12 + i * 4, "System Bus") ~ key
+		ss3[i] = memory.read_u32_le(address + 32 + pSel[4] * 12 + i * 4, "System Bus") ~ key
 	end
 
 	mon.species = ss0[0] & 0xFFFF
@@ -195,35 +266,27 @@ end
 
 function readPartyMon(address)
 	local mon = readBoxMon(address)
-	mon.status = emu:read32(address + 80)
-	mon.level = emu:read8(address + 84)
-	mon.mail = emu:read32(address + 85)
-	mon.hp = emu:read16(address + 86)
-	mon.maxHP = emu:read16(address + 88)
-	mon.attack = emu:read16(address + 90)
-	mon.defense = emu:read16(address + 92)
-	mon.speed = emu:read16(address + 94)
-	mon.spAttack = emu:read16(address + 96)
-	mon.spDefense = emu:read16(address + 98)
+	mon.status = memory.read_u32_le(address + 80, "System Bus")
+	mon.level = memory.read_u8(address + 84, "System Bus")
+	mon.mail = memory.read_u32_le(address + 85, "System Bus")
+	mon.hp = memory.read_u16_le(address + 86, "System Bus")
+	mon.maxHP = memory.read_u16_le(address + 88, "System Bus")
+	mon.attack = memory.read_u16_le(address + 90, "System Bus")
+	mon.defense = memory.read_u16_le(address + 92, "System Bus")
+	mon.speed = memory.read_u16_le(address + 94, "System Bus")
+	mon.spAttack = memory.read_u16_le(address + 96, "System Bus")
+	mon.spDefense = memory.read_u16_le(address + 98, "System Bus")
 	return mon
 end
 
 function getParty()
 	local party = {}
 	local monStart = partyloc
-	for i = 1, emu:read8(partyCount) do
+	for i = 1, memory.read_u8(partyCount, "System Bus") do
 		party[i] = readPartyMon(monStart)
 		monStart = monStart + partyMonSize
 	end
 	return party
-end
-
-function startScript()
-	if not displayBuffer then
-		displayBuffer = console:createBuffer("Run&Bun Display")
-		displayBuffer:setSize(200,1000)
-		displayBuffer:print("Run&Bun Display en cours d'exécution...\n")
-	end
 end
 
 -- Main loop, triggered each frame
@@ -239,8 +302,9 @@ function updateBuffer()
         local partyPokemon = "PARTY"
         local boxPokemon = "BOX"
         local deadPokemon = "DEAD"
+		local levelCap = "LEVELCAP|" .. getLevelCap()
 		local defeatedTrainers = "TRAINERS"
-		local pickedStarter = "STARTER|" .. emu:read16(pickedStarterAddress)
+		local pickedStarter = "STARTER|" .. memory.read_u16_le(pickedStarterAddress, "System Bus")
 
 		-- Retrieve party Pokémon
         for _, mon in ipairs(getParty()) do
@@ -259,7 +323,7 @@ function updateBuffer()
 				end
 
 				-- Only read valid data
-				if (emu:read32(address) ~=0) then
+				if (memory.read_u32_le(address, "System Bus") ~=0) then
 					mon = readBoxMon(address)
 
 					-- Pokémon found : add it to data file
@@ -279,7 +343,7 @@ function updateBuffer()
 
 		-- Retrieve booleans indicating if trainers have been defeated
 		for trainerAddress = defeatedTrainersStart, defeatedTrainersEnd do
-			defeatedTrainers = defeatedTrainers .. "|" .. emu:read8(trainerAddress)
+			defeatedTrainers = defeatedTrainers .. "|" .. memory.read_u8(trainerAddress, "System Bus")
 		end
 
 		-- Retrieve pokemonData.txt path from env variable defined by Python script
@@ -290,40 +354,18 @@ function updateBuffer()
 			local f = io.open(dataFilePath, "w")
 
 			if f then
-				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter)
+				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. levelCap .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter)
 				f:close()
 			else
-				displayBuffer:print("Cannot write pokemon data\n")
+				print("Cannot write pokemon data\n")
 			end
 		else
-			displayBuffer:print('Cannot find current folder, run "Run&Bun Reader.exe" and restart mGBA\n')
+			print('Cannot find current folder, run "Run&Bun Reader.exe" and restart mGBA\n')
 		end
     end
 end
 
-callbacks:add("frame", updateBuffer)
-callbacks:add("start", startScript)
-callbacks:add("reset", startScript)
-
-if emu then
-	startScript()
+while true do
+    updateBuffer()
+    emu.frameadvance()
 end
-
-curve = {3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,4,4,0,0,4,4,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,5,5,3,3,3,3,3,3,3
-		,3,3,3,3,3,5,5,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,3,3,3,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,5,5,4,0,0,0,0,0,0,5,5,0,0,0,0,0,5,5,5,5,5,0,0,0,0
-		,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,0,0,0,0,4,4,4,4,0,5,5,0,4,4,4,4,0,0,3,3,3,3,4,4,0,3,3,3,3,4,3,3,0,0,0,0,0,3,0,4,0,0,0,0
-		,0,0,3,0,4,4,0,0,3,5,3,0,0,0,0,5,5,4,0,0,4,5,5,5,5,0,0,0,0,5,4,0,0,0,0,0,5,4,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,3,3,3,3
-		,3,3,3,3,0,0,5,5,5,0,0,2,2,5,5,5,1,1,1,3,3,3,2,2,4,0,4,4,3,4,5,5,5,0,0,5,5,0,0,1,2,3,2,2,5,5,2,2,0,0,0,4,4,4,3,3,3,3,3,1,1,1,2,4,4,0,0,2,2
-		,0,0,1,1,1,1,1,1,0,3,4,4,4,4,5,4,3,0,0,0,3,3,3,1,1,1,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,3,3,3,0,0,3,3,3,3,3,3,3,1,1,1,1
-		,0,0,0,3,3,0,0,0,0,0,0,0,4,2,2,0,0,4,3,4,4,4,0,0,0,0,0,0,4,3,0,5,5,5,5,3,3,5,5,5,5,0,0,5,1,1,5,5,5,3,0,0,5,0,0,0,4,0,0,0,3,5,0,5,0,4,0,0,5
-		,5,5,5,5,5,5,5,5,5,5,5,3,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0,0,0,0,0,0,0,4,4,3,3,3,0,0,3,3,3,0,0,0,0,4,3,3,3,3,3,3,0,0,3,3,3,3,3,3,0,0,0,0
-		,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,4,4,3,3,3,3,3,3,0,0,5,5,5,0,0,0,0,0,0,0,0,0,4,0,0,0,0,3,3,3,5,5,5,0,0,3,3,3,5,5,5,0,0,0,0,0,0
-		,3,3,0,0,0,0,0,0,5,5,5,5,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-		,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,5,5,5,5,4,0,0,0,0,0,0,0,0,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0
-		,0,0,0,0,3,3,3,4,5,5,0,0,0,0,4,5,5,0,5,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,3,3,3,3,0,0,3,3,3,0,0
-		,0,4,4,0,0,0,0,0,0,4,4,3,3,3,1,1,1,0,0,0,5,5,3,3,0,0,3,3,0,0,5,5,5,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,5,5,4,0,0,0,5,5,5,5,0,5,5,5,5,5,5,5,5,5,5
-		,5,5,5,5,5,0,0,0,3,0,5,3,3,3,3,0,3,3,0,3,0,5,5,5,5,5,3,0,0,5,5,5,3,3,3,5,3,4,5,0,5,5,0,1,4,3,0,5,5,5,5,0,5,3,5,5,4,5,5,5,5,0,0,0,0,0,0,0,0
-		,0,0,0,3,3,3,0,0,5,0,0,0,0,0,0,0,0,0,5,5,5,0,4,0,0,3,3,0,0,5,5,0,0,3,0,3,3,0,3,3,5,5,5,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-		,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,3,3,0,0,0,0,0,0,5,5
-		,5,5,5,5,5,5,5,5,5,5,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,0,0
-		,0,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,3,0,0,0,0,0,0,0,0,0,0,5,4,0,5,5,5,5,5,5,5,5}

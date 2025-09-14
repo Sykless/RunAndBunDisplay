@@ -1,0 +1,1659 @@
+Youngster Calvin	Route 102
+	0x02026397	00 -> 40
+	Poochyena	Lillipup	Rookidee				TRAINER_PIC_YOUNGSTER
+	None	None	None
+
+Bug Catcher Rick	Route 102
+	0x020263BC	00 -> 80
+	Grubbin	Pineco	Sizzlipede				TRAINER_PIC_BUG_CATCHER
+	Oran Berry	Oran Berry	Oran Berry
+
+Youngster Allen	Route 102
+	0x02026399	00 -> 20	
+	Skiddo	Litleo	Psyduck				TRAINER_PIC_YOUNGSTER
+	Lum Berry	Oran Berry	Oran Berry
+
+Lass Tiana	Route 102
+	0x020263BB	00 -> 08
+	Swirlix	Spinda					TRAINER_PIC_LASS
+	Berry Juice	Berry Juice
+
+Triathlete Mikey	Route 104						
+	0x02026397	40 -> C0
+	Krabby	Clobbopus	Yanma				TRAINER_PIC_RUNNING_TRIATHLETE_M
+	Oran Berry	Oran Berry	Iron Ball
+
+Fisherman Darian	Route 104						
+	0x020263C7	00 -> 01
+	Magikarp	Magikarp					TRAINER_PIC_FISHERMAN
+	Choice Band	Focus Sash
+
+Lady Cindy	Route 104						
+	0x0202637E	00 -> 04
+	Minccino	Jigglypuff	Phanpy				TRAINER_PIC_LADY
+	Oran Berry	Oran Berry	Oran Berry
+
+Team Aqua Grunt Petalburg Woods [Boss]	Route 104						
+	0x020263EC	10 -> 30
+	Carvanha	Croagunk	Exeggcute				TRAINER_PIC_AQUA_GRUNT_M
+	Oran Berry	Salac Berry	Oran Berry
+
+Fisherman Elliot	Route 106						
+	0x0202639A	00 -> 08
+	Staryu	Lombre	Arrokuda				TRAINER_PIC_FISHERMAN
+	Mystic Water	Lum Berry	Flying Gem
+
+Ruin Maniac Georgie	Route 106						
+	0x0202639A	08 -> 18
+	Dwebble	Sandygast	Mawile	Munchlax			TRAINER_PIC_RUIN_MANIAC
+	Berry Juice	Lum Berry	Leftovers	Salac Berry
+
+Tuber Chandler	Route 109						
+	0x020263C7	01 -> 05
+	Smoochum	Elekid	Magby				TRAINER_PIC_TUBER_M
+	Never-Melt Ice	Magnet	Charcoal
+
+Tuber Lola	Route 109						
+	0x02026377	00 -> 02
+	Fletchinder	Herdier					TRAINER_PIC_TUBER_F
+	Lum Berry	Lum Berry
+
+Sailor Edmond	Route 109						
+	0x020263AD	00 -> 08
+	Wingull	Buizel	Palpitoad				TRAINER_PIC_SAILOR
+	Oran Berry	Rindo Berry	Lum Berry
+
+Fisherman Bill	Route 109						
+	0x020263AD	08 -> 0C
+	Caterpie	Weedle	Wurmple	Scatterbug	Blipbug		TRAINER_PIC_FISHERMAN
+	Choice Band	Choice Band	Choice Band	Choice Band	Choice Specs
+
+Tuber Ricky	Route 109						
+	0x02026378	00 -> 01
+	Aipom	Nidorino	Luxio				TRAINER_PIC_TUBER_M
+	Silk Scarf	Black Sludge	Lum Berry
+
+Tuber Hailey	Route 109						
+	0x020263C7	05 -> 07
+	Mienfoo	Nidorina	Flaaffy				TRAINER_PIC_TUBER_F
+	Black Belt	Lum Berry	Magnet
+
+Camper Gavi [Optional]	Route 110						
+	0x02026399	20 -> 60
+	Bibarel	Ponyta	Eelektrik	Sunflora	Dustox		TRAINER_PIC_CAMPER
+	Lum Berry	Sitrus Berry	Sitrus Berry	Lum Berry	Black Sludge
+
+Team Aqua Grunt Museum #1 [Boss]	Slateport Museum						
+	0x02026372	00 -> 10
+	Murkrow	Skrelp	Tirtouga				TRAINER_PIC_AQUA_GRUNT_M
+	Lum Berry	Black Sludge	Rindo Berry
+
+Team Aqua Grunt Museum #2 [Boss]	Slateport Museum						
+	0x02026372	10 -> 30
+	Mareanie	Frillish	Whirlipede				TRAINER_PIC_AQUA_GRUNT_M
+	Black Sludge	Lum Berry	Rocky Helmet
+
+Battle Girl Laura	Dewford Gym						
+	0x020263A5	00 -> 04
+	Riolu	Stufful	Mankey				TRAINER_PIC_BATTLE_GIRL
+	Eviolite	Sitrus Berry	Lum Berry
+
+Sailor Brenden	Dewford Gym						
+	0x020263B7	00 -> 10
+	Farfetch’d-Galar	Heracross					TRAINER_PIC_SAILOR
+	Sitrus Berry	Lum Berry
+
+Battle Girl Lilith	Dewford Gym						
+	0x020263B7	10 -> 30
+	Makuhita	Mankey	Ledian				TRAINER_PIC_BATTLE_GIRL
+	Flame Orb	Focus Sash	Muscle Band
+
+Black Belt Cristian	Dewford Gym						
+	0x020263B7	30 -> 70
+	Meditite	Machoke	Gurdurr				TRAINER_PIC_BLACK_BELT
+	Coba Berry	Leftovers	Black Belt
+
+Black Belt Takao	Dewford Gym						
+	0x02026386	00 -> 08
+	Breloom	Mienfoo	Buneary				TRAINER_PIC_BLACK_BELT
+	Toxic Orb	Black Belt	Wide Lens
+
+Battle Girl Jocelyn	Dewford Gym						
+	0x020263A5	04 -> 06
+	Kecleon	Golett	Pignite	Hakamo-o			TRAINER_PIC_BATTLE_GIRL
+	Lum Berry	Eviolite	Lum Berry	Sitrus Berry
+
+Leader Brawly [Boss]	Dewford Gym						
+	0x020263DD	80 -> 81
+	Kubfu	Lopunny	Combusken	Hitmontop	Poliwhirl	Scraggy	TRAINER_PIC_LEADER_BRAWLY
+	Iapapa Berry	Eject Button	Lum Berry	Protective Pads	Expert Belt	Eviolite
+
+Bug Catcher Lyle	Petalburg Woods						
+	0x020263BD	00 -> 01
+	Ariados	Kricketune	Ninjask				TRAINER_PIC_BUG_CATCHER
+	Scope Lens	Lum Berry	White Herb
+
+Bug Maniac James	Petalburg Woods						
+	0x020263BD	01 -> 21
+	Larvesta	Vibrava	Shedinja	Ribombee			TRAINER_PIC_BUG_MANIAC
+	Eviolite	Yache Berry	Bright Powder	Wise Glasses
+
+Rich Boy Winston	Route 104						
+	0x02026381	00 -> 01
+	Furfrou	Mightyena					TRAINER_PIC_RICH_BOY
+	Leftovers	Leftovers
+
+Fisherman Ivan	Route 104						
+	0x0202639A	18 -> 1A
+	Qwilfish	Seadra	Sealeo				TRAINER_PIC_FISHERMAN
+	Black Sludge	Lum Berry	Lum Berry
+
+Twins Gina And Mia [Double]	Route 104						
+	0x020263AC	00 -> 08
+	Dedenne	Clefairy	Abra	Togedemaru			TRAINER_PIC_TWINS
+	Sitrus Berry	Eviolite	Lum Berry	Lum Berry
+
+Lass Haley	Route 104						
+	0x020263BB	08 -> 18
+	Lumineon	Gloom	Staravia	Numel			TRAINER_PIC_LASS
+	Lum Berry	Lum Berry	Fighting Gem	Passho Berry
+
+Youngster Joey	Route 116						
+	0x02026398	00 -> 04
+	Raticate	Linoone-Galar	Pidgeotto				TRAINER_PIC_YOUNGSTER
+	Muscle Band	Lum Berry	Lum Berry
+
+Lass Janice	Route 116						
+	0x020263BB	18 -> 38
+	Oricorio	Brionne	Whimsicott				TRAINER_PIC_LASS
+	Lum Berry	Metronome	Kebia Berry
+
+Rich Boy Dawson	Route 116						
+	0x020263C6	00 -> 40
+	Komala	Gyarados					TRAINER_PIC_RICH_BOY
+	Chople Berry	Sitrus Berry
+
+School Kid Jerry & Youngster Johnson [Double]	Route 116						
+	0x02026392	00 -> 02
+	Simipour	Masquerain		Purugly	Sneasel		TRAINER_PIC_YOUNGSTER
+	Mystic Water	Lum Berry		Lum Berry	Focus Sash
+
+Bug Catcher Jose	Route 116						
+	0x020263BD	21 -> 23
+	Pinsir	Durant	Vivillon				TRAINER_PIC_BUG_CATCHER
+	Lum Berry	Lum Berry	Lum Berry
+
+Lady Sarah	Route 116						
+	0x020263C6	40 -> C0
+	Granbull	Perrserker					TRAINER_PIC_LADY
+	Sitrus Berry	Electric Gem
+
+School Kid Karen	Route 116						
+	0x02026393	00 -> 01
+	Tangela	Cramorant	Raichu				TRAINER_PIC_SCHOOL_KID_F
+	Lum Berry	Sitrus Berry	Lum Berry
+
+Hiker Clark	Route 116						
+	0x020263BE	00 -> 80
+	Dugtrio	Dugtrio-Alola					TRAINER_PIC_HIKER
+	Soft Sand	Focus Sash
+
+Hiker Devan	Route 116						
+	0x020263CE	04 -> 06
+	Primeape	Drednaw	Gligar				TRAINER_PIC_HIKER
+	Lum Berry	Lum Berry	Flying Gem
+
+Youngster Josh	Rustboro Gym						
+	0x02026398	04 -> 05
+	Tyrunt	Archen	Cranidos				TRAINER_PIC_YOUNGSTER
+	Lum Berry	Choice Scarf	Lum Berry
+
+Youngster Tommy	Rustboro Gym						
+	0x02026398	05 -> 07
+	Sudowoodo	Carkol	Lileep	Corsola			TRAINER_PIC_YOUNGSTER
+	Lum Berry	Passho Berry	Leftovers	Rindo Berry
+
+Hiker Marc	Rustboro Gym						
+	0x020263B7	70 -> 78
+	Graveler	Graveler-Alola	Lairon	Boldore			TRAINER_PIC_HIKER
+	Weakness Policy	Shuca Berry	Custap Berry	Leftovers
+
+Leader Roxanne [Boss]	Rustboro Gym						
+	0x020263DC	07 -> 87
+	Bisharp	Zygarde-10%	Aurorus	Carracosta	Lunatone	Solrock	TRAINER_PIC_LEADER_ROXANNE
+	Focus Sash	Soft Sand	Lum Berry	Rindo Berry	Weakness Policy	Lum Berry
+
+Hiker Mike	Rusturf Tunnel						
+	0x020263BF	00 -> 08
+	Sandaconda	Probopass	Stoutland	Clefable			TRAINER_PIC_HIKER
+	Lum Berry	Leftovers	Lum Berry	Pixie Plate
+
+Breeder Lydia	Route 117						
+	0x020263B4	00 -> 02
+	Gothitelle	Hitmonchan	Toxtricity	Sableye			TRAINER_PIC_POKEMON_BREEDER_F
+	Leftovers	Lum Berry	Lum Berry	Sitrus Berry
+
+Breeder Corgi	Route 117						
+	0x0202638C	00 -> 08
+	Arcanine	Furfrou	Lucario	Manectric	Boltund		TRAINER_PIC_POKEMON_BREEDER_M
+	Sitrus Berry	Leftovers	Lum Berry	Lum Berry	Focus Sash
+
+Psychic Brandi & Battle Girl Aisha [Double]	Route 117						
+	0x020263CE	00 -> 20
+	Orbeetle	Hypno		Toxicroak	Hariyama		TRAINER_PIC_BATTLE_GIRL
+	Lum Berry	Sitrus Berry		Payapa Berry	Lum Berry
+
+Battle Girl Luna	Route 117						
+	0x020263CE	36 -> 3E
+	Electivire	Turtonator	Tsareena	Grapploct	Quagsire		TRAINER_PIC_BATTLE_GIRL
+	Sitrus Berry	Sitrus Berry	Lum Berry	Lum Berry	Rindo Berry
+
+Triathlete Dylan	Route 117						
+	0x0202639D	00 -> 10
+	Accelgor	Persian-Alola	Dodrio				TRAINER_PIC_RUNNING_TRIATHLETE_M
+	Wise Glasses	Black Glasses	Lum Berry
+
+Triathlete Maria	Route 117						
+	0x0202639E	00 -> 02
+	Rapidash	Cinccino	Swellow				TRAINER_PIC_RUNNING_TRIATHLETE_F
+	Lum Berry	Lum Berry	Silk Scarf
+
+Breeder Isaac	Route 117						
+	0x020263B3	00 -> 04
+	Claydol	Klinklang	Electrode	Froslass			TRAINER_PIC_POKEMON_BREEDER_M
+	Lum Berry	Metal Coat	Lum Berry	Lum Berry
+
+Sr. And Jr. Anna And Meg [Double]	Route 117						
+	0x02026393	01 -> 81
+	Emolga	Seaking	Lanturn	Marowak			TRAINER_PIC_SR_AND_JR
+	Metronome	Focus Sash	Lum Berry	Sitrus Berry
+
+Trainer Chelle Daycare [Boss]	Route 117											
+	0x020263EC	70 -> F0
+	Lapras	Rhydon	Togekiss	Vespiquen	Slowbro-Galar	Delcatty	TRAINER_PIC_LEAF
+	Sitrus Berry	Eviolite	Scope Lens	Lum Berry	Quick Claw	Silk Scarf
+
+Camper Tyron & Aroma Lady Celina [Double]	Route 111											
+	0x020263C8	00 -> 02
+	Farfetch’d	Watchog	Arbok		Bellossom	Vileplume	TRAINER_PIC_AROMA_LADY
+	Leek	Lum Berry	Black Sludge		Lum Berry	Lum Berry
+
+Picnicker Bianca	Route 111										
+	0x020263C8	03 -> 07
+	Butterfree	Simisage	Stantler				TRAINER_PIC_PICNICKER
+	Choice Specs	White Herb	Lum Berry
+
+Kindler Hayden	Route 111											
+	0x020263C8	07 -> 0F
+	Oricorio-Sensu	Heatmor	Camerupt	Turtonator			TRAINER_PIC_KINDLER
+	Sitrus Berry	Lum Berry	Lum Berry	Lum Berry
+
+Fisherman Dale	Route 110											
+	0x0202639A	1A -> 3A
+	Golduck	Dewgong	Swanna	Kingdra			TRAINER_PIC_FISHERMAN
+	Fighting Gem	Bug Gem	Bright Powder	Normal Gem
+
+Psychic Edward	Route 110			
+	0x0202638D	00 -> 01
+	Chimecho	Girafarig	Swoobat				TRAINER_PIC_PSYCHIC_M
+	Assault Vest	Lum Berry	Focus Sash
+
+Trainer Wally	Mauville						
+	0x020263C2	00 -> 01
+	Kirlia	Zigzagoon-Galar					TRAINER_PIC_WALLY
+	None	None
+
+Guitarist Kirk	Mauville Gym						
+	0x02026387	00 -> 80
+	Pincurchin	Drifblim	Toxtricity	Raichu-Alola			TRAINER_PIC_GUITARIST
+	Sitrus Berry	Electric Seed	Poison Barb	Lum Berry
+
+Battle Girl Vivian	Mauville Gym						
+	0x020263C1	00 -> 02
+	Volbeat	Jolteon	Oricorio-Pom-Pom	Zebstrika	Galvantula		TRAINER_PIC_BATTLE_GIRL
+	Focus Sash	Lum Berry	Lum Berry	Lum Berry	Lum Berry
+
+Youngster Ben	Mauville Gym						
+	0x02026398	07 -> 0F
+	Porygon	Rotom	Golem-Alola	Electrode	Pikachu		TRAINER_PIC_YOUNGSTER
+	Eviolite	Leftovers	Lum Berry	Lum Berry	Light Ball
+
+Guitarist Shawn & Guitarist Angelo [Double]	Mauville Gym						
+	0x02026388	00 -> 04
+	Plusle	Dedenne		Minun	Klinklang		TRAINER_PIC_GUITARIST
+	Shuca Berry	Focus Sash		Terrain Extender	Lum Berry
+
+Leader Wattson [Boss]	Mauville Gym						
+	0x020263DD	81 -> 83
+	Magnezone	Lanturn	Rotom-Fan	Zeraora	Eelektross	Ampharos-Mega	TRAINER_PIC_LEADER_WATTSON
+	Custap Berry	Leftovers	Lum Berry	Shuca Berry	Leftovers	Ampharosite
+
+Psychic Jaclyn	Route 110						
+	0x0202638E	00 -> 08
+	Venomoth	Xatu	Grumpig	Gallade			TRAINER_PIC_PSYCHIC_F
+	Lum Berry	Sitrus Berry	Salac Berry	Lum Berry
+
+Triathlete Abigail	Route 110						
+	0x0202639C	00 -> 40
+	Mienshao	Ninjask	Dugtrio	Magneton			TRAINER_PIC_CYCLING_TRIATHLETE_F
+	Wide Lens	Choice Band	Life Orb	Eviolite
+
+Triathlete Anthony	Route 110						
+	0x0202639C	40 -> 41
+	Luxray	Sharpedo	Braviary				TRAINER_PIC_CYCLING_TRIATHLETE_M
+	Lum Berry	Expert Belt	Sitrus Berry
+
+Triathlete Alyssa	Route 110						
+	0x020263C7	07 -> 27
+	Absol	Meowstic-F					TRAINER_PIC_CYCLING_TRIATHLETE_F
+	Focus Sash	Wise Glasses
+
+Triathlete Benjamin	Route 110						
+	0x0202639C	41 -> 43
+	Pachirisu	Unfezant	Raticate	Jumpluff			TRAINER_PIC_CYCLING_TRIATHLETE_M
+	Light Clay	Lum Berry	Flame Orb	Flying Gem
+
+Triathlete Jacob	Route 110						
+	0x0202639B	00 -> 80
+	Floatzel	Sawsbuck	Salazzle				TRAINER_PIC_CYCLING_TRIATHLETE_M
+	Life Orb	Power Herb	Black Sludge
+
+Triathlete Jasmine	Route 110						
+	0x0202639C	43 -> C3
+	Rapidash-Galar	Zoroark	Sirfetch’d				TRAINER_PIC_CYCLING_TRIATHLETE_F
+	Lum Berry	Black Glasses	Choice Scarf
+
+Trainer Rival Cycling Road Sceptile [Boss]	Route 110						
+	0x020263ED	30 -> 38
+	Indeedee	Sceptile	Houndoom	Kingdra	Hawlucha	Granbull	TRAINER_PIC_MAY
+	Light Clay	White Herb	Power Herb	Lum Berry	Psychic Seed	Assault Vest
+
+Trainer Rival Cycling Road Blaziken [Boss]	Route 110						
+	0x020263ED	30 -> 38
+	Indeedee	Blaziken	Kingdra	Tsareena	Weavile	Alcremie	TRAINER_PIC_MAY
+	Light Clay	White Herb	Leftovers	Assault Vest	Focus Sash	Psychic Seed
+
+Trainer Rival Cycling Road Blaziken [Boss]	Route 110						
+	0x020263ED	30 -> 38
+	Indeedee	Swampert	Tsareena	Houndoom	Hawlucha	Gardevoir	TRAINER_PIC_MAY
+	Light Clay	Rindo Berry	Assault Vest	Power Herb	Psychic Seed	Focus Sash
+
+Pokéfan Isabel & Pokéfan Kaleb [Double]	Route 110						
+	0x02026395	00 -> 40
+	Lycanroc-Dusk	Victreebel		Kangaskhan	Fearow		TRAINER_PIC_POKEFAN_M
+	Focus Sash	Salac Berry		Sitrus Berry	Lum Berry
+
+Guitarist Brian	Route 110						
+	0x020263C7	2F -> 3F
+	Exploud	Chatot	Heliolisk	Snorlax			TRAINER_PIC_GUITARIST
+	Choice Scarf	Lum Berry	Lum Berry	Leftovers
+
+Collector Edwin	Route 110						
+	0x020263B0	00 -> 01
+	Typhlosion	Feraligatr	Meganium				TRAINER_PIC_COLLECTOR
+	Charcoal	Mystic Water	Miracle Seed
+
+Black Belt Rhett & Guitarist Marcos [Double]	Route 103						
+	0x020263C7	00 -> 80
+	Crabominable	Heracross	Poliwrath		Crobat	Noivern	TRAINER_PIC_GUITARIST
+	Lum Berry	Flame Orb	Sitrus Berry		Lum Berry	Lum Berry
+
+Pokéfan Miguel	Route 103						
+	0x02026394	00 -> 20
+	Dedenne	Togedemaru	Mimikyu				TRAINER_PIC_POKEFAN_M
+	Focus Sash	Rocky Helmet	Lum Berry
+
+Aroma Lady Daisy	Route 103						
+	0x02026374	00 -> 10
+	Gourgeist-Super	Lurantis	Exeggutor-Alola	Florges			TRAINER_PIC_AROMA_LADY
+	Lum Berry	Assault Vest	Sitrus Berry	Leftovers
+
+Twins Amy And Liv [Double]	Route 103						
+	0x020263AC	08 -> 0A
+	Gengar	Corviknight	Persian	Jynx	Hypno		TRAINER_PIC_TWINS
+	Black Sludge	Light Clay	Focus Sash	Lum Berry	Leftovers
+
+Fisherman Andrew	Route 103						
+	0x0202639A	3A -> 3B
+	Jellicent	Barraskewda	Bruxish	Dhelmise			TRAINER_PIC_FISHERMAN
+	Lum Berry	Ice Gem	Water Gem	Lagging Tail
+
+Cool Trainer Mary [Accuracy Room]	Petalburg Gym								
+	0x0202637B	00 -> 02
+	Doublade	Golurk	Lycanroc-Midnight	Machamp			TRAINER_PIC_COOLTRAINER_F
+	Eviolite	Lum Berry	Lum Berry	Leftovers
+
+Cool Trainer Randall [Speed Room]	Petalburg Gym									
+	0x02026378	01 -> 81
+	Ninjask	Scolipede	Yanmega	Sharpedo	Blaziken		TRAINER_PIC_COOLTRAINER_M
+	Power Herb	Muscle Band	Wise Glasses	Life Orb	Focus Sash
+
+Cool Trainer Alexia [Defense Room]	Petalburg Gym							
+	0x0202637B	02 -> 06
+	Mudsdale	Ferrothorn	Blastoise	Corviknight	Claydol		TRAINER_PIC_COOLTRAINER_F
+	Sitrus Berry	Leftovers	Leftovers	Lum Berry	Weakness Polic
+
+Cool Trainer George [Recovery Room]	Petalburg Gym									
+	0x02026379	00 -> 02
+	Rillaboom	Arcanine	Starmie	Slowking-Galar	Clefable		TRAINER_PIC_COOLTRAINER_M
+	Leftovers	Leftovers	Leftovers	Black Sludge	Leftovers
+
+Cool Trainer Parker [Critical-Hit Room]	Petalburg Gym											
+	0x02026379	00 -> 01
+	Barbaracle	Honchkrow	Inteleon	Octillery	Drapion		TRAINER_PIC_COOLTRAINER_M
+	Scope Lens	Scope Lens	Lum Berry	Scope Lens	Scope Lens
+
+Cool Trainer Jody [Strength Room]	Petalburg Gym												
+	0x0202637B	06 -> 0E
+	Rampardos	Slaking	Medicham	Conkeldurr	Marowak		TRAINER_PIC_COOLTRAINER_F
+	Life Orb	Choice Band	Focus Sash	Lum Berry	Thick Club
+
+Cool Trainer Berke [Recoil Room]	Petalburg Gym									
+	0x02026379	01 -> 05
+	Floette-Eternal	Lucario	Staraptor	Bouffalant	Emboar		TRAINER_PIC_COOLTRAINER_M
+	Choice Scarf	Sitrus Berry	Lum Berry	Custap Berry	Choice Scarf
+
+Leader Norman [Boss]	Petalburg Gym										
+	0x020263DD	83 -> 8B
+	Porygon2	Azumarill	Diggersby	Meloetta	Cinccino	Pidgeot-Mega	TRAINER_PIC_LEADER_NORMAN
+	Eviolite	Sitrus Berry	Focus Sash	Lum Berry	King's Rock	Pidgeotite
+
+Winstrate Victor	Winstrate House						
+	0x02026394	20 -> 30
+	Toucannon	Emolga					TRAINER_PIC_POKEFAN_M
+	Lum Berry	Lum Berry
+
+Winstrate Victoria	Winstrate House						
+	0x02026395	40 -> 48
+	Abomasnow	Centiskorch	Seismitoad				TRAINER_PIC_POKEFAN_F
+	Lum Berry	Leftovers	Lum Berry
+
+Winstrate Vivi	Winstrate House						
+	0x020263BB	38 -> 78
+	Ribombee	Flygon	Sudowoodo				TRAINER_PIC_LASS
+	Focus Sash	Lum Berry	Lum Berry
+
+Winstrate Vicky	Winstrate House						
+	0x02026397	C0 -> C1
+	Medicham-Mega	Krookodile					TRAINER_PIC_EXPERT_F
+	Medichamite	Lum Berry
+
+Picnicker Irene	Route 111						
+	0x020263AB	00 -> 10
+	Leavanny	Clefable	Stoutland				TRAINER_PIC_PICNICKER
+	Focus Sash	Leftovers	Silk Scarf
+
+Camper Travis	Route 111						
+	0x0202638B	00 -> 04
+	Crustle	Sigilyph	Piloswine				TRAINER_PIC_CAMPER
+	Lum Berry	Leftovers	Eviolite
+
+Ruin Maniac Bryan & Picnicker Celia [Double]	Route 111						
+	0x020263CD	00 -> 01
+	Gigalith	Nidoking		Maractus	Gastrodon		TRAINER_PIC_PICNICKER
+	Sitrus Berry	Lum Berry		Sitrus Berry	Rindo Berry
+
+Camper Branden	Route 111						
+	0x020263CD	01 -> 03
+	Skarmory	Torterra	Bewear	Rhyperior			TRAINER_PIC_CAMPER
+	Red Card	Leftovers	Leftovers	Leftovers
+
+Collector John	Route 111						
+	0x020263AA	00 -> 20
+	Copperajah	Delphox	Mandibuzz	Lycanroc	Sandslash		TRAINER_PIC_COLLECTOR
+	Choice Band	Sticky Barb	Rocky Helmet	Focus Sash	Lum Berry
+
+Camper Beau	Route 111						
+	0x0202638A	00 -> 10
+	Probopass	Palossand	Perrserker				TRAINER_PIC_CAMPER
+	Focus Sash	Bright Powder	Assault Vest
+
+Ninja Boy Jinra	Route 111						
+	0x020263AA	20 -> 60
+	Nidoqueen	Charizard	Golem	Cacturne			TRAINER_PIC_NINJA_BOY
+	Life Orb	Rock Gem	Bright Powder	Bright Powder
+
+Ruin Maniac Rigger	Route 111						
+	0x02026375	00 -> 10
+	Dragapult	Krookodile	Cloyster	Shelgon			TRAINER_PIC_RUIN_MANIAC
+	Light Clay	Weakness Policy	Lum Berry	Eviolite
+
+Camper Drew	Route 111						
+	0x0202638A	10 -> 18
+	Hippowdon	Gogoat	Golem-Alola	Excadrill			TRAINER_PIC_CAMPER
+	Lum Berry	Leftovers	Lum Berry	Air Balloon
+
+Cool Trainer Wilton	Route 111						
+	0x02026379	07 -> 47
+	Scizor	Tangrowth	Golisopod	Noctowl	Dugtrio		TRAINER_PIC_COOLTRAINER_M
+	Occa Berry	Assault Vest	Assault Vest	Blunder Policy	Focus Sash
+
+Black Belt Daisuke	Route 111						
+	0x02026387	80 -> A0
+	Passimian	Throh	Heracross				TRAINER_PIC_BLACK_BELT
+		Sitrus Berry	Flame Orb
+
+Cool Trainer Brooke	Route 111						
+	0x0202637B	0E -> 4E
+	Vanilluxe	Tentacruel	Dewgong	Magmortar	Beartic		TRAINER_PIC_COOLTRAINER_F
+	Sitrus Berry	Flame Orb
+
+Pokémaniac Wyatt	Route 113						
+	0x020263C8	0F -> 8F
+	Vanilluxe	Tentacruel	Dewgong	Magmortar	Beartic		TRAINER_PIC_COOLTRAINER_F
+	Life Orb	Lum Berry	Assault Vest	Lum Berry
+
+Ninja Boy Lao	Route 113						
+	0x020263A4	00 -> 08
+	Crobat	Muk-Alola	Weezing-Galar				TRAINER_PIC_NINJA_BOY
+	Life Orb	Black Sludge	Black Sludge
+
+Picnicker Sophie	Route 113						
+	0x020263C8	8F -> 9F
+	Slurpuff	Lickilicky	Appletun	Alcremie			TRAINER_PIC_PICNICKER
+	Sitrus Berry	Lum Berry	Starf Berry	Leftovers
+
+Ninja Boy Lung	Route 113						
+	0x020263A4	08 -> 18
+	Seviper	Accelgor	Greninja				TRAINER_PIC_NINJA_BOY
+	Shuca Berry	Life Orb
+
+Rich Boy Santos	Route 113						
+	0x02026398	0F -> 8F
+	Ninetales	Mamoswine	Shiftry	Typhlosion			TRAINER_PIC_RICH_BOY
+	Lum Berry	Lum Berry	Lum Berry	Choice Scarf
+
+Twins Tori And Tia [Double]	Route 113						
+	0x020263C4	00 -> 20
+	Scrafty	Bruxish	Gothitelle	Bisharp			TRAINER_PIC_TWINS
+	Sitrus Berry	Lum Berry	Sitrus Berry	Lum Berry
+
+Youngster Jaylen	Route 113						
+	0x02026398	8F -> CF
+	Scyther	Talonflame	Tauros				TRAINER_PIC_YOUNGSTER
+	Choice Band	Flying Gem	Lum Berry
+
+Bird Keeper Coby	Route 113						
+	0x020263C8	9F -> BF
+	Golurk	Flapple	Vikavolt				TRAINER_PIC_BIRD_KEEPER
+	Lum Berry	Starf Berry	Lum Berry
+
+Parasol Lady Madeline	Route 113						
+	0x020263A6	00 -> 04
+	Raichu	Marowak-Alola	Rhyperior				TRAINER_PIC_PARASOL_LADY
+	Lum Berry	Thick Club	Leftovers
+
+Camper Lawrence	Route 113						
+	0x020263C8	BF -> FF
+	Staraptor	Lumineon	Gyarados				TRAINER_PIC_CAMPER
+	White Herb	Focus Sash	Leftovers
+
+Winstrate Vito Fallarbor [Boss]	Fallarbor						
+	0x020263ED	38 -> 3A
+	Alakazam	Crobat	Breloom	Crawdaunt	Swellow	Aggron-Mega	TRAINER_PIC_COOLTRAINER_M
+	Focus Sash	Lum Berry	Fighting Gem	Water Gem	Life Orb	Aggronite
+
+Picnicker Charlotte	Route 114						
+	0x020263C9	00 -> 04
+	Dodrio	Ditto	Leafeon				TRAINER_PIC_PICNICKER
+	Choice Band	Focus Sash	Leftovers
+
+Rich Boy Braw	Route 114						
+	0x0202638A	18 -> 58
+	Nidoking	Honchkrow	Mimikyu	Snorlax			TRAINER_PIC_RICH_BOY
+	Wide Lens	Lum Berry	Life Orb	Leftovers
+
+Fisherman Nolan	Route 114						
+	0x0202639A	3B -> 7B
+	Milotic	Starmie					TRAINER_PIC_FISHERMAN
+	Lum Berry	Wise Glasses
+
+Fisherman Kai	Route 114						
+	0x020263C9	04 -> 06
+	Politoed	Barraskewda	Armaldo	Golisopod			TRAINER_PIC_FISHERMAN
+	Leftovers	Mystic Water	Lum Berry	Bug Gem
+
+Fisherman Claude	Route 114						
+	0x0202639A	7B -> 7F
+	Qwilfish	Vaporeon	Clawitzer	Empoleon			TRAINER_PIC_FISHERMAN
+	Focus Sash	Leftovers	Iapapa Berry	Leftovers
+
+Kindler Bernie	Route 114						
+	0x02026389	00 -> 40
+	Rotom-Heat	Simisear	Skuntank	Druddigon			TRAINER_PIC_KINDLER
+	White Herb	Starf Berry	Fire Gem	Rocky Helmet
+
+Picnicker Angelina	Route 114						
+	0x020263C9	06 -> 07
+	Donphan	Gallade	Purugly				TRAINER_PIC_PICNICKER
+	Custap Berry	Leftovers	Silk Scarf
+
+Expert Nancy	Route 114						
+	0x020263AB	10 -> 11
+	Bronzong	Eldegoss	Sirfetch’d	Drampa	Dugtrio		TRAINER_PIC_EXPERT_F
+	Iron Ball	Eject Button	Leek	Lum Berry	Soft Sand
+
+Sr. And Jr. Tyra And Ivy [Double]	Route 114						
+	0x020263C4	20 -> A0
+	Klefki	Houndoom	Grimmsnarl	Pyroar			TRAINER_PIC_SR_AND_JR
+	Occa Berry	Life Orb	Sitrus Berry	Normal Gem
+
+Pokémaniac Steve	Route 114						
+	0x02026381	01 -> 81
+	Muk	Polteageist					TRAINER_PIC_POKEMANIAC
+	Shuca Berry	White Herb
+
+Hiker Lucas	Route 114						
+	0x020263BE	80 -> A0
+	Steelix	Relicanth	Gliscor				TRAINER_PIC_HIKER
+	Iapapa Berry	Lum Berry	Toxic Orb
+
+Hiker Lenny	Route 114						
+	0x020263BE	A0 -> B0
+	Ferrothorn	Cradily	Whiscash				TRAINER_PIC_HIKER
+	Occa Berry	Leftovers	Power Herb
+
+Black Belt Nob	Route 115						
+	0x02026386	08 -> 88
+	Mienshao	Bewear					TRAINER_PIC_BLACK_BELT
+	Life Orb	Sitrus Berry
+
+Battle Girl Cyndy	Route 115						
+	0x020263A5	06 -> 0E
+	Grapploct	Breloom	Hitmontop				TRAINER_PIC_BATTLE_GIRL
+	Leftovers	Toxic Orb	Life Orb
+
+Psychic Marlene	Route 115						
+	0x020263CE	3E -> 3F
+	Mr. Rime	Cofagrigus					TRAINER_PIC_PSYCHIC_F
+	Lum Berry	Leftovers
+
+Collector Hector	Route 115						
+	0x020263B0	01 -> 03
+	Heatmor	Durant	Slowking	Zangoose			TRAINER_PIC_COLLECTOR
+	Expert Belt	Lum Berry	Leftovers	Toxic Orb
+
+Kindler Bryant & Aroma Lady Shayla [Double]	Route 112						
+	0x020263CD	00 -> 04
+	Torkoal	Charizard		Leafeon	Venusaur		TRAINER_PIC_AROMA_LADY
+	Lum Berry	Iapapa Berry		Grass Gem	Life Orb
+
+Camper Merc	Route 112						
+	0x0202638A	58 -> 78
+	Primeape	Drapion	Trevenant	Scyther			TRAINER_PIC_CAMPER
+	Expert Belt	Dark Gem	Sitrus Berry	Eviolite
+
+Hiker Trent	Route 112						
+	0x020263BE	B0 -> B8
+	Bastiodon	Diggersby	Magcargo				TRAINER_PIC_HIKER
+	Red Card	Chople Berry	Red Card
+
+Hiker Brice	Route 112						
+	0x020263BE	B8 -> BC
+	Bronzong	Solrock	Lunatone	Camerupt			TRAINER_PIC_HIKER
+	Colbur Berry	Room Service	Room Service	Fire Gem
+
+Picnicker Carol	Route 112						
+	0x020263AA	60 -> E0
+	Dubwool	Ampharos	Spinda				TRAINER_PIC_PICNICKER
+	Assault Vest	Shuca Berry	Chople Berry
+
+Team Magma Grunt Mt Chimney #1 & Team Magma Grunt Mt Chimney #2 [Double]	Mt. Chimney						
+	0x020263B8	00 -> 08
+	Accelgor	Sawk		Indeedee-F	Meowstic-F		TRAINER_PIC_MAGMA_GRUNT_F
+	Focus Sash	Weakness Policy		Wise Glasses	Fairy Gem
+
+Magma Admin Tabitha	Mt. Chimney						
+	0x020263BA	00 -> 20
+	Torkoal	Armaldo	Espeon	Victreebel	Absol-Mega		TRAINER_PIC_MAGMA_ADMIN
+	Quick Claw	Leftovers	Life Orb	Lum Berry	Absolite
+
+Magma Leader Maxie Mt. Chimney [Boss]	Mt. Chimney						
+	0x020262E1	81 -> 89
+	Crustle	Wobbuffet	Aerodactyl	Kommo-o	Zarude	Camerupt-Mega	TRAINER_PIC_MAGMA_LEADER_MAXIE
+	Red Card	Iapapa Berry	Dark Gem	Leftovers	Assault Vest	Cameruptite
+
+Hiker Eric & Picnicker Autumn [Double]	Jagged Pass						
+	0x020263BF	08 -> 09
+	Gliscor	Stonjourner		Ferrothorn	Serperior	Boltund	TRAINER_PIC_PICNICKER
+	Flying Gem	Focus Sash		Rocky Helmet	Choice Scarf	Life Orb
+
+Triathlete Julio	Jagged Pass						
+	0x020263B6	00 -> 40
+	Zebstrika	Bibarel	Klinklang				TRAINER_PIC_CYCLING_TRIATHLETE_M
+	Shuca Berry	Quick Claw	Lum Berry
+
+Camper Ethan	Jagged Pass						
+	0x0202638B	06 -> 07
+	Bouffalant	Togekiss					TRAINER_PIC_CAMPER
+	Chople Berry	Scope Lens
+
+Picnicker Diana	Jagged Pass						
+	0x020263AB	11 -> 15
+	Rillaboom	Wigglytuff	Arcanine	Thievul			TRAINER_PIC_PICNICKER
+	Assault Vest	Life Orb	Leftovers	Grassy Seed
+
+Kindler Jace	Lavaridge Gym						
+	0x02026389	40 -> 50
+	Cinderace	Talonflame	Rotom-Heat	Chandelure			TRAINER_PIC_KINDLER
+	Wide Lens	Flying Gem	Leftovers	Choice Scarf
+
+Kindler Cole	Lavaridge Gym						
+	0x02026389	50 -> 52
+	Torkoal	Octillery	Weezing-Galar	Magmortar	Turtonator		TRAINER_PIC_KINDLER
+	Iapapa Berry	Scope Lens	Lum Berry	Sitrus Berry	Lum Berry
+
+Cool Trainer Gerald	Lavaridge Gym						
+	0x020263C1	02 -> 03
+	Torkoal	Octillery	Weezing-Galar	Magmortar	Turtonator		TRAINER_PIC_KINDLER
+	Focus Sash	Fire Gem	Fire Gem
+
+Kindler Keegan	Lavaridge Gym						
+	0x02026389	52 -> 72
+	Rapidash-Galar	Blissey	Darmanitan				TRAINER_PIC_KINDLER
+	Life Orb	Chople Berry	Life Orb
+
+Kindler Axle	Lavaridge Gym						
+	0x02026389	72 -> 7A
+	Infernape	Houndoom	Centiskorch				TRAINER_PIC_KINDLER
+	Focus Sash	Lum Berry	Charti Berry
+
+Kindler Jeff	Lavaridge Gym						
+	0x02026389	7A -> 7E
+	Torkoal	Lickilicky	Skuntank	Flareon			TRAINER_PIC_KINDLER
+	Custap Berry	Assault Vest	Lum Berry	Toxic Orb
+
+Battle Girl Danielle	Lavaridge Gym						
+	0x020263C1	03 -> 07
+	Slowking-Galar	Golurk	Emboar	Blaziken	Flygon		TRAINER_PIC_BATTLE_GIRL
+	Assault Vest	Leftovers	Choice Scarf	White Herb	Life Orb
+
+Hiker Eli	Lavaridge Gym						
+	0x020263AE	00 -> 20
+	Drampa	Nidoking	Rhyperior	Arcanine	Delphox		TRAINER_PIC_HIKER
+	Iapapa Berry	Black Sludge	Passho Berry	Fire Gem	Life Orb
+
+Leader Flannery [Double] [Boss]	Lavaridge Gym						
+	0x020263DD 	8B -> 8F
+	Charizard-Mega-Y	Salazzle	Entei	Incineroar	Talonflame	Marowak-Alola	TRAINER_PIC_LEADER_FLANNERY
+	Charizardite Y	Focus Sash	Lum Berry	Assault Vest	Life Orb	Thick Club
+
+Tuber Simon	Seashore House						
+	0x02026378	81 -> 83
+	Floatzel	Azumarill	Dedenne	Zangoose	Persian	Ludicolo	TRAINER_PIC_TUBER_M
+	Flame Orb	Assault Vest	Petaya Berry	Toxic Orb	Leftovers	Lum Berry
+
+Beauty Johanna	Seashore House						
+	0x020263C0	00 -> 80
+	Nidoqueen	Lapras	Milotic	Primarina	Bruxish	Tsareena	TRAINER_PIC_BEAUTY
+	Black Sludge	Leftovers	Leftovers	Leftovers	Water Gem	Wide Lens
+
+Sailor Dwayne	Seashore House						
+	0x020263AD	0C -> 2C
+	Clawitzer	Gyarados	Barbaracle	Sharpedo	Swalot	Machamp	TRAINER_PIC_SAILOR
+	Lum Berry	Wacan Berry	White Herb	Dark Gem	Custap Berry	Adrenaline Orb
+
+Swimmer♀ Rose & Swimmer♂ Deandre [Double]	Route 118						
+	0x02026374	10 -> 30
+	Seaking	Dewgong	Whiscash		Gyarados	Samurott	TRAINER_PIC_SWIMMER_M
+	Focus Sash	Sitrus Berry	Lum Berry		Flying Gem	Bug Gem
+
+Fisherman Wade	Route 118						
+	0x0202639B	80 -> 81
+	Starmie	Gorebyss	Huntail				TRAINER_PIC_FISHERMAN
+	Light Clay	Rindo Berry	Wacan Berry
+
+Fisherman Barny	Route 118						
+	0x0202639A	7F -> FF
+	Pelipper	Basculin	Beartic				TRAINER_PIC_FISHERMAN
+	Focus Sash	Choice Band	Lum Berry
+
+Guitarist Dalton	Route 118						
+	0x02026388	04 -> 14
+	Rillaboom	Toxtricity	Swellow				TRAINER_PIC_GUITARIST
+	Choice Band	Black Sludge	Toxic Orb
+
+Bird Keeper Perry & Bird Keeper Chester [Double]	Route 118						
+	0x020263A1	00 -> 40
+	Vikavolt	Flygon		Fearow	Honchkrow		TRAINER_PIC_BIRD_KEEPER
+	Charti Berry	Yache Berry		Scope Lens	Scope Lens
+
+Bug Maniac Taylor	Route 119						
+	0x0202638C	08 -> 0A
+	Escavalier	Parasect	Shiinotic	Kabutops			TRAINER_PIC_BUG_MANIAC
+	Assault Vest	Bright Powder	Kebia Berry	Bug Gem
+
+Bug Catcher Doug	Route 119						
+	0x020263BD	23 -> 27
+	Shuckle	Mothim	Illumise				TRAINER_PIC_BUG_CATCHER
+	Custap Berry	Flying Gem	Choice Specs
+
+Fisherman Phil	Route 119						
+	0x020263A2	00 -> 01
+	Luvdisc	Luvdisc	Luvdisc				TRAINER_PIC_FISHERMAN
+	Mystic Water	Mystic Water	Mystic Water
+
+Ranger Lydian	Route 119						
+	0x020263C6	C0 -> E0
+	Kingdra	Milotic	Heliolisk	Dragalge			TRAINER_PIC_POKEMON_RANGER_M
+	Lum Berry	Leftovers	Expert Belt	White Herb
+
+Bug Catcher Greg	Route 119						
+	0x020263BD	27 -> 2F
+	Galvantula	Frosmoth	Beedrill				TRAINER_PIC_BUG_CATCHER
+	Bug Gem	Leftovers	Scope Lens
+
+Bug Maniac Brent	Route 119						
+	0x0202638B	07 -> 87
+	Wormadam	Wormadam-Trash	Wormadam-Sandy				TRAINER_PIC_BUG_MANIAC
+	White Herb	Leftovers	Rock Gem
+
+Expert Donald	Route 119						
+	0x0202638C	0A -> 0B
+	Ludicolo	Turtonator	Sceptile	Excadrill			TRAINER_PIC_EXPERT_M
+	Focus Sash	Air Balloon	Dragon Gem	Scope Lens
+
+Ranger Catherine	Route 119						
+	0x020263B5	00 -> 80
+	Mr. Mime-Galar	Linoone	Decidueye	Sylveon			TRAINER_PIC_POKEMON_RANGER_F
+	Light Clay	Sitrus Berry	Dark Gem	Water Gem
+
+Ranger Jackson	Route 119						
+	0x020263B5	80 -> 81
+	Morpeko	Ambipom	Kingler				TRAINER_PIC_POKEMON_RANGER_M
+	Shuca Berry	Silk Scarf	Assault Vest
+
+Bug Catcher Kent	Route 119						
+	0x020263BD	2F -> 3F
+	Beautifly	Araquanid	Scizor				TRAINER_PIC_BUG_CATCHER
+	Focus Sash	Leftovers	Steel Gem
+
+Ninja Boy Takashi & Psychic Dayton [Double]	Route 119						
+	0x020263A4	18 -> 19
+	Shiftry	Wailord		Oranguru	Gardevoir		TRAINER_PIC_PSYCHIC_M
+	Silk Scarf	Life Orb		Colbur Berry	Fairy Gem
+
+Bird Keeper Hugh	Route 119						
+	0x020263A1	40 -> C0
+	Skarmory	Mantine	Flapple	Pikachu			TRAINER_PIC_BIRD_KEEPER
+	Custap Berry	Sharp Beak	Liechi Berry	Light Ball
+
+Parasol Lady Koko	Route 119						
+	0x020263CF	01 -> 03
+	Barraskewda	Roserade	Rotom-Wash	Jynx	Goodra		TRAINER_PIC_PARASOL_LADY
+	Mystic Water	Black Sludge	Lum Berry	Life Orb	Leftovers
+
+Team Aqua Grunt Weather Inst #1	Weather Institute						
+	0x02026373	00 -> 04
+	Barbaracle	Breloom	Malamar	Scolipede	Starmie		TRAINER_PIC_AQUA_GRUNT_F
+	Bright Powder	Bright Powder	Quick Claw	King's Rock	Expert Belt
+
+Team Aqua Grunt Weather Inst #2	Weather Institute						
+	0x02026372	30 -> 32
+	Drampa	Ferrothorn	Exeggutor	Omastar	Walrein		TRAINER_PIC_AQUA_GRUNT_M
+	Focus Band	Quick Claw	Quick Claw	Bright Powder	Leftovers
+
+Team Aqua Grunt Weather Inst #3	Weather Institute						
+	0x02026372	32 -> 36
+	Porygon-Z	Slowbro-Galar	Haxorus	Weavile			TRAINER_PIC_AQUA_GRUNT_M
+	Chople Berry	Quick Claw	Water Gem	Dark Gem
+
+Team Aqua Grunt Weather Inst #4 & Team Aqua Grunt Weather Inst #5 [Double]	Weather Institute						
+	0x02026372	36 -> 3E
+	Ninetales-Alola	Liepard		Arctozolt	Arctovish		TRAINER_PIC_AQUA_GRUNT_F
+	Ice Gem	Psychic Gem		Lum Berry	Lum Berry
+
+Aqua Admin Shelly Weather Institute [Boss]	Weather Institute						
+	0x020262E2	10 -> 90
+	Mienshao	Nihilego	Dragonite	Tornadus	Lanturn	Blastoise-Mega	TRAINER_PIC_AQUA_ADMIN_F
+	Focus Sash	Power Herb	Choice Band	Flying Gem	Assault Vest	Blastoisinite
+
+Trainer Rival Bridge Sceptile [Double] [Boss]	Route 119						
+	0x020262DD	00 -> 40
+	Sceptile-Mega	Mantine	Goodra	Raichu-Alola	Lucario	Gastrodon	TRAINER_PIC_MAY
+	Sceptilite	Life Orb	Leftovers	Focus Sash	Fighting Gem	Rindo Berry
+
+Trainer Rival Bridge Blaziken [Double] [Boss]	Route 119						
+	0x020262DD	00 -> 40
+	Blaziken-Mega	Ludicolo	Salamence	Heliolisk	Metagross	Blastoise	TRAINER_PIC_MAY
+	Blazikenite	Life Orb	Flying Gem	Focus Sash	Assault Vest	Leftovers
+
+Trainer Rival Bridge Swampert [Double] [Boss]	Route 119						
+	0x020262DD	00 -> 40
+	Swampert-Mega	Gyarados	Dragapult	Magnezone	Toxicroak	Exeggutor-Alola	TRAINER_PIC_MAY
+	Swampertite	Life Orb	Dragon Gem	Custap Berry	Focus Sash	Iapapa Berry
+
+Ninja Boy Yasu & Guitarist Fabian [Double]	Route 119						
+	0x020263A3	01 -> 81
+	Banette	Castform		Jolteon	Obstagoon		TRAINER_PIC_GUITARIST
+	Focus Sash	Focus Sash		Life Orb	Normal Gem
+
+Ninja Boy Gren	Route 119						
+	0x020263C1	07 -> 0F
+	Forretress	Dusknoir	Ditto	Togedemaru	Greninja-Ash		TRAINER_PIC_NINJA_BOY
+	Custap Berry	Red Card	Quick Claw	Weakness Policy	Mystic Water
+
+Parasol Lady Clarissa	Route 120						
+	0x020263A6	04 -> 0C
+	Greedent	Amoonguss	Hatterene				TRAINER_PIC_PARASOL_LADY
+	Custap Berry	Black Sludge	Leftovers
+
+Bird Keeper Robert	Route 120						
+	0x020263A2	01 -> 41
+	Vikavolt	Tropius	Delibird				TRAINER_PIC_BIRD_KEEPER
+	Power Herb	Sitrus Berry	Choice Band
+
+Expert Kevin	Fortree Gym						
+	0x020263A2	41 -> 45
+	Masquerain	Rotom-Mow	Porygon2	Gyarados	Togekiss		TRAINER_PIC_EXPERT_M
+	Focus Sash	White Herb	Eviolite	Wacan Berry	Leftovers
+
+Picnicker Ashley	Fortree Gym						
+	0x020263C1	0F -> 8F
+	Pelipper	Decidueye	Scizor	Golduck			TRAINER_PIC_PICNICKER
+	Choice Scarf	Starf Berry	Flying Gem	Psychic Gem
+
+Camper Flint & Bird Keeper Edwardo [Double]	Fortree Gym						
+	0x020263C1	8F -> CF
+	Ribombee	Venomoth		Oricorio-Pom-Pom	Oricorio	Oricorio-Pa'u	TRAINER_PIC_BIRD_KEEPER
+	Focus Sash	Lum Berry		Iapapa Berry	Fire Gem	Iapapa Berry
+
+Bird Keeper Darius	Fortree Gym						
+	0x020263D4	04 -> 0C
+	Clefable	Noivern	Crobat	Gliscor			TRAINER_PIC_BIRD_KEEPER
+	Life Orb	Flying Gem	Scope Lens	Yache Berry
+
+Bird Keeper Jared	Fortree Gym						
+	0x020263A2	55 -> 57
+	Yanmega	Sirfetch’d	Corviknight	Archeops	Blaziken		TRAINER_PIC_BIRD_KEEPER
+	Choice Scarf	Lum Berry	Leftovers	Focus Sash	Flying Gem
+
+Leader Winona [Boss]	Fortree Gym						
+	0x020263DD	8F -> 9F
+	Staraptor	Volcarona	Hawlucha	Celesteela	Shaymin-Sky	Altaria-Mega	TRAINER_PIC_LEADER_WINONA
+	Choice Scarf	Focus Sash	Flying Gem	Assault Vest	Leftovers	Altarianite
+
+Bird Keeper Colin	Route 120						
+	0x020263A2	57 -> 77
+	Aerodactyl	Charizard	Empoleon				TRAINER_PIC_BIRD_KEEPER
+	Passho Berry	Focus Sash	Water Gem
+
+Cool Trainer Gian	Route 120						
+	0x020263CF	03 -> 07
+	Drifblim	Swampert	Duraludon	Alakazam	Alcremie		TRAINER_PIC_COOLTRAINER_M
+	Colbur Berry	Rindo Berry	Leftovers	Focus Sash	Babiri Berry
+
+Cool Trainer Jennifer & Battle Girl Callie [Double]	Route 120						
+	0x0202637B	4E -> CE
+	Metagross	Ursaring	Zebstrika		Sawk	Poliwrath	TRAINER_PIC_BATTLE_GIRL
+	Assault Vest	Toxic Orb	Life Orb		Lum Berry	Lum Berry
+
+Parasol Lady Angelica	Route 120						
+	0x020263A6	0C -> 1C
+	Stunfisk	Chansey	Mismagius	Musharna			TRAINER_PIC_PARASOL_LADY
+	Lum Berry	Eviolite	Ghost Gem	Colbur Berry
+
+Ranger Jenna	Route 120						
+	0x020263B6	40 -> 41
+	Dragalge	Pangoro	Gothitelle	Lilligant			TRAINER_PIC_POKEMON_RANGER_F
+	Shuca Berry	Eject Pack	Focus Sash	Leftovers
+
+Ranger Lorenzo	Route 120						
+	0x020263B5	81 -> 83
+	Golisopod	Appletun	Miltank	Mr. Mime			TRAINER_PIC_POKEMON_RANGER_M
+	Bug Gem	Lum Berry	White Herb	Life Orb
+
+Bug Maniac Jeffrey	Route 120						
+	0x0202638C	0B -> 0F
+	Vivillon	Vivillon	Vivillon				TRAINER_PIC_BUG_MANIAC
+	Focus Sash	Focus Sash	Life Orb
+
+Ruin Maniac Chip	Route 120						
+	0x02026375	10 -> 30
+	Armaldo	Cradily	Tyrantrum	Aurorus			TRAINER_PIC_RUIN_MANIAC
+	Iapapa Berry	Leftovers	Dragon Gem	Ice Gem
+
+Ninja Boy Keigo	Route 120						
+	0x020263C1	CF -> DF
+	Lickilicky	Cursola	Glalie	Zoroark			TRAINER_PIC_NINJA_BOY
+	Chople Berry	Custap Berry	Leftovers	Dark Gem
+
+Ninja Boy Riley	Route 120						
+	0x020263C1	DF -> FF
+	Greninja	Dugtrio	Bisharp	Durant			TRAINER_PIC_NINJA_BOY
+	Life Orb	Ground Gem	Black Glasses	Focus Sash
+
+Cool Trainer Tammy & Bug Maniac Cale [Double]	Route 121						
+	0x0202637D	00 -> 08
+	Slaking	Archeops		Weezing-Galar	Weezing		TRAINER_PIC_BUG_MANIAC
+	Lum Berry	Rock Gem		Air Balloon	Air Balloon
+
+Beauty Jessica	Route 121						
+	0x0202637F	00 -> 80
+	Froslass	Jynx	Florges	Kangaskhan			TRAINER_PIC_BEAUTY
+	Ice Gem	Expert Belt	Leftovers	Leftovers
+
+Breeder Pat	Route 121						
+	0x020263CF	1F -> 5F
+	Sudowoodo	Porygon2	Magneton	Garbodor	Coalossal		TRAINER_PIC_POKEMON_BREEDER_F
+	Custap Berry	Eviolite	Eviolite	Shuca Berry	Fire Gem
+
+Breeder Myles	Route 121						
+	0x020263CF	5F -> 7F
+	Pyroar	Oranguru	Passimian	Mudsdale	Furret		TRAINER_PIC_POKEMON_BREEDER_M
+	Power Herb	Colbur Berry	Lum Berry	Leftovers	Dark Gem
+
+Cool Trainer Gustavo	Route 121						
+	0x02026371	04 -> 0C
+	Eelektross	Conkeldurr	Jellicent	Scrafty	Hydreigon		TRAINER_PIC_COOLTRAINER_M
+	Lum Berry	Assault Vest	Leftovers	Poison Gem	Lum Berry
+
+Cool Trainer Cristin	Route 121						
+	0x020263CF	7F -> FF
+	Hippowdon	Tyranitar	Stoutland	Dracozolt			TRAINER_PIC_COOLTRAINER_F
+	Lum Berry	Chople Berry	Normal Gem	Dragon Gem
+
+Young Couple Brian And Casey [Double]	Route 121						
+	0x02026393	81 -> C1
+	Audino	Gengar	Heracross	Mamoswine			TRAINER_PIC_YOUNG_COUPLE
+	Chople Berry	Poison Gem	Focus Sash	Lum Berry
+
+Gentleman Walter	Route 121						
+	0x0202638F	00 -> 40
+	Granbull	Bewear	Manectric	Silvally-Dark	Azumarill		TRAINER_PIC_GENTLEMAN
+	Iapapa Berry	Leftovers	Life Orb	Dark Memory	Water Gem
+
+Pokéfan Vanessa	Route 121						
+	0x02026395	48 -> 58
+	Mimikyu	Aromatisse	Reuniclus				TRAINER_PIC_POKEFAN_F
+	Iron Ball	Fairy Gem	Life Orb
+
+Trainer Rival Lilycove Sceptile [Boss]	Lilycove						
+	0x020262F4	00 -> 10
+	Garchomp	Machamp	Alakazam	Melmetal	Moltres-Galar	Sceptile-Mega	TRAINER_PIC_MAY
+	Yache Berry	Leftovers	Focus Sash	Assault Vest	Iapapa Berry	Sceptilite
+
+Trainer Rival Lilycove Blaziken [Boss]	Lilycove						
+	0x020262F4	00 -> 10
+	Garchomp	Machamp	Weavile	Melmetal	Articuno-Galar	Blaziken-Mega	TRAINER_PIC_MAY
+	Yache Berry	Leftovers	Life Orb	Assault Vest	Lum Berry	Blazikenite
+
+Trainer Rival Lilycove Swampert [Boss]	Lilycove						
+	0x020262F4	00 -> 10
+	Garchomp	Alakazam	Weavile	Melmetal	Zapdos-Galar	Swampert-Mega	TRAINER_PIC_MAY
+	Yache Berry	Focus Sash	Life Orb	Assault Vest	Iapapa Berry	Swampertite
+
+Young Couple Dez And Luke [Double]	Mt. Pyre						
+	0x020263C0	80 -> 81
+	Perrserker	Meowstic	Arcanine	Smeargle	Raticate-Alola		TRAINER_PIC_YOUNG_COUPLE
+	Iapapa Berry	Light Clay	Fire Gem	Leftovers	Dark Gem
+
+Hex Maniac Leah	Mt. Pyre						
+	0x02026374	31 -> 39
+	Hariyama	Umbreon	Beheeyem	Delphox			TRAINER_PIC_HEX_MANIAC
+	Flame Orb	Leftovers	Power Herb	White Herb
+
+Pokémaniac Mark	Mt. Pyre						
+	0x02026382	04 -> 06
+	Cramorant	Rhydon	Hitmonlee	Yanmega			TRAINER_PIC_POKEMANIAC
+	Wacan Berry	Eviolite	Normal Gem	Rock Gem
+
+Psychic William	Mt. Pyre						
+	0x0202638D	01 -> 11
+	Runerigus	Tentacruel	Exeggutor	Glaceon			TRAINER_PIC_PSYCHIC_M
+	Custap Berry	Black Sludge	Sitrus Berry	Leftovers
+
+Breeder Gabrielle	Mt. Pyre						
+	0x02026371	0C -> 0E
+	Clefable	Breloom	Froslass	Raichu-Alola	Grimmsnarl		TRAINER_PIC_POKEMON_BREEDER_F
+	Lum Berry	Focus Sash	Ice Gem	Electric Gem	Leftovers
+
+Hex Maniac Tasha	Mt. Pyre						
+	0x0202637D	08 -> 28
+	Omastar	Muk-Alola	Carnivine	Spiritomb	Dusclops		TRAINER_PIC_HEX_MANIAC
+	Focus Sash	Black Sludge	Grass Gem	Dark Gem	Eviolite
+
+Black Belt Atsushi	Mt. Pyre						
+	0x02026387	A0 -> E0
+	Krookodile	Lycanroc-Dusk	Infernape	Poliwrath	Chesnaught		TRAINER_PIC_BLACK_BELT
+	Lum Berry	Rock Gem	Focus Sash	Leftovers	Salac Berry
+
+Hex Maniac Valerie	Mt. Pyre						
+	0x0202637D	28 -> 38
+	Kangaskhan	Mismagius	Malamar	Wobbuffet			TRAINER_PIC_HEX_MANIAC
+	Assault Vest	Life Orb	Leftovers	Lum Berry
+
+Psychic Cedric	Mt. Pyre						
+	0x020263AB	15 -> 1D
+	Electivire	Obstagoon	Polteageist	Gothitelle			TRAINER_PIC_PSYCHIC_M
+	Life Orb	Roseli Berry	White Herb	Expert Belt
+
+Psychic Kayla	Mt. Pyre						
+	0x0202638E	08 -> 88
+	Golduck	Bronzong	Corsola-Galar	Mandibuzz			TRAINER_PIC_PSYCHIC_F
+	Life Orb	Colbur Berry	Eviolite	Rocky Helmet
+
+Black Belt Zander	Mt. Pyre						
+	0x02026373	04 -> 84
+	Sawk	Throh	Lucario				TRAINER_PIC_BLACK_BELT
+	Lum Berry	Leftovers	Normal Gem
+
+Team Aqua Grunt Mt Pyre #1	Mt. Pyre						
+	0x020263DB	01 -> 03
+	Crawdaunt	Kingdra	Gumshoos				TRAINER_PIC_AQUA_GRUNT_M
+	Focus Sash	Scope Lens	Quick Claw
+
+Team Aqua Grunt Mt Pyre #2	Mt. Pyre						
+	0x020263DB	03 -> 07
+	Dragonite	Avalugg	Floatzel	Gyarados			TRAINER_PIC_AQUA_GRUNT_F
+	White Herb	Lum Berry	Life Orb	Bright Powder
+
+Team Aqua Grunt Mt Pyre #3	Mt. Pyre						
+	0x02026373	84 -> 85
+	Gengar	Octillery	Skuntank	Relicanth			TRAINER_PIC_AQUA_GRUNT_M
+	Focus Band	Water Gem	Lum Berry	Bright Powder
+
+Team Aqua Grunt Mt Pyre #4	Mt. Pyre						
+	0x02026372	3E -> BE
+	Inteleon	Luxray	Cloyster	Drapion			TRAINER_PIC_AQUA_GRUNT_M
+	Light Clay	Flame Orb	King's Rock	Scope Lens
+
+Team Aqua Grunt Mt Pyre #5 & Team Aqua Grunt Mt Pyre #6 [Double]	Mt. Pyre						
+	0x02026373	85 -> 87
+	Toxicroak	Raichu		Dracovish	Basculin		TRAINER_PIC_AQUA_GRUNT_F
+	Focus Band	Focus Band		Lum Berry	Choice Band
+
+Aqua Leader Archie Mt. Pyre [Tag Battle] [Boss]	Mt. Pyre						
+	0x020262EA	01 -> 11
+	Urshifu-Rapid-Strike	Hydreigon	Rotom-Frost	Dragalge	Stakataka	Sharpedo-Mega	TRAINER_PIC_AQUA_LEADER_ARCHIE
+	Lum Berry	Dragon Gem	Leftovers	Black Sludge	Assault Vest	Sharpedonite
+
+Team Magma Grunt Magma Hideout #1	Magma Hideout						
+	0x020263C9	0F -> 1F
+	Torkoal	Tauros	Charizard	Granbull	Arcanine-Hisui		TRAINER_PIC_MAGMA_GRUNT_M
+	Quick Claw	Life Orb	Bright Powder	Assault Vest	Focus Band
+
+Team Magma Grunt Magma Hideout #2	Magma Hideout						
+	0x020263C9	1F -> 3F
+	Aggron	Seviper	Electivire	Marowak-Alola	Houndoom		TRAINER_PIC_MAGMA_GRUNT_M
+	Focus Band	Quick Claw	Scope Lens	Thick Club	Dark Gem
+
+Team Magma Grunt Magma Hideout #3	Magma Hideout						
+	0x020263C9	3F -> 7F
+	Nidoking	Camerupt	Aerodactyl	Slaking	Zoroark		TRAINER_PIC_MAGMA_GRUNT_M
+	Focus Band	Quick Claw	King's Rock	Eject Button	Dark Gem
+
+Team Magma Grunt Magma Hideout #4	Magma Hideout						
+	0x020263CB	00 -> 02
+	Manectric	Pyroar	Fearow	Absol	Trapinch		TRAINER_PIC_MAGMA_GRUNT_F
+	Life Orb	Focus Band	Scope Lens	Scope Lens	Eviolite
+
+Team Magma Grunt Magma Hideout #5	Magma Hideout						
+	0x020263CA	00 -> 01
+	Druddigon	Shiftry	Marowak	Turtonator			TRAINER_PIC_MAGMA_GRUNT_M
+	Roseli Berry	Bright Powder	Thick Club	Quick Claw
+
+Team Magma Grunt Magma Hideout #6	Magma Hideout						
+	0x020263C9	7F -> FF
+	Coalossal	Flareon	Solrock	Dracozolt	Talonflame		TRAINER_PIC_MAGMA_GRUNT_M
+	Quick Claw	Toxic Orb	Bright Powder	Fire Gem	Focus Band
+
+Team Magma Grunt Magma Hideout #7 & Team Magma Grunt Magma Hideout #8 [Double]	Magma Hideout						
+	0x020263CB	02 -> 06
+	Ninetales	Miltank	Donphan	Exeggutor	Jumpluff	Arcanine	TRAINER_PIC_MAGMA_GRUNT_M
+	Fire Gem	Leftovers	Custap Berry	Tanga Berry	Focus Sash	Iapapa Berry
+
+Team Magma Grunt Magma Hideout #9	Magma Hideout						
+	0x020263CA	03 -> 0B
+	Togekiss	Seismitoad	Slowbro	Electrode	Dhelmise		TRAINER_PIC_MAGMA_GRUNT_M
+	Scope Lens	Bright Powder	Quick Claw	Bright Powder	Assault Vest
+
+Team Magma Grunt Magma Hideout #10	Magma Hideout						
+	0x020263CA	0B -> 0F
+	Silvally-Fire	Zoroark	Flygon	Skuntank			TRAINER_PIC_MAGMA_GRUNT_M
+	Fire Memory	Focus Sash	Bright Powder	Bright Powder
+
+Team Magma Grunt Magma Hideout #11	Magma Hideout						
+	0x020263CA	0F -> 1F
+	Weezing-Galar	Muk-Alola	Cinderace	Drampa			TRAINER_PIC_MAGMA_GRUNT_M
+	Payapa Berry	Shuca Berry	Misty Seed	Quick Claw
+
+Team Magma Grunt Magma Hideout  #12	Magma Hideout						
+	0x020263CB	06 -> 0E
+	Runerigus	Slowking-Galar	Chandelure	Cacturne	Ninjask		TRAINER_PIC_MAGMA_GRUNT_F
+	Bright Powder	Black Sludge	Leftovers	Quick Claw	Focus Band
+
+Team Magma Grunt Magma Hideout #13	Magma Hideout						
+	0x020263CA	1F -> 5F
+	Kangaskhan	Centiskorch	Crobat	Toxapex			TRAINER_PIC_MAGMA_GRUNT_M
+	Silk Scarf	Leftovers	Choice Specs	Black Sludge
+
+Team Magma Grunt Magma Hideout #14	Magma Hideout						
+	0x020263CA	5F -> DF
+	Grimmsnarl	Turtonator	Lickilicky	Incineroar	Jumpluff		TRAINER_PIC_MAGMA_GRUNT_M
+	Kebia Berry	Eject Pack	Quick Claw	Assault Vest	Leftovers
+
+Team Magma Grunt Magma Hideout #15	Magma Hideout						
+	0x020263CB	0E -> 0F
+	Galvantula	Magmortar	Ursaring	Arbok	Carnivine		TRAINER_PIC_MAGMA_GRUNT_M
+	Focus Sash	Choice Specs	Toxic Orb	Bright Powder	Scope Lens
+
+Magma Admin Tabitha	Magma Hideout						
+	0x020263CB	0F -> 1F
+	Blacephalon	Hitmonlee	Yanmega	Snorlax	Victini	Absol-Mega	TRAINER_PIC_MAGMA_ADMIN
+	Focus Sash	Normal Gem	Flying Gem	Leftovers	Eject Pack	Absolite
+
+Magma Leader Maxie Magma Hideout [Boss]	Magma Hideout						
+	0x020262DD	40 -> C0
+	Groudon	Tangrowth	Garchomp	Naganadel	Mew	Houndoom-Mega	TRAINER_PIC_MAGMA_LEADER_MAXIE
+	Iapapa Berry	Life Orb	Rocky Helmet	Choice Scarf	Lum Berry	Houndoominite
+
+Team Aqua Grunt Aqua Hideout #1	Aqua Hideout						
+	0x02026370	00 -> 04
+	Persian-Alola	Pangoro	Bouffalant	Grapploct	Floatzel	Kingler	TRAINER_PIC_AQUA_GRUNT_M
+	Bright Powder	Quick Claw	Water Gem	Assault Vest	Focus Band	Life Orb
+
+Team Aqua Grunt Aqua Hideout #2	Aqua Hideout						
+	0x02026373	87 -> 8F
+	Cryogonal	Hariyama	Serperior	Alomomola	Eelektross		TRAINER_PIC_AQUA_GRUNT_F
+	Focus Band	Life Orb	Bright Powder	Rocky Helmet	Leftovers
+
+Team Aqua Grunt Aqua Hideout #3	Aqua Hideout						
+	0x02026388	14 -> 15
+	Omastar	Escavalier	Lanturn	Crobat	Sharpedo		TRAINER_PIC_AQUA_GRUNT_F
+	Focus Sash	Quick Claw	Bright Powder	Flying Gem	Focus Band
+
+Team Aqua Grunt Aqua Hideout #4	Aqua Hideout						
+	0x02026370	04 -> 24
+	Ninetales-Alola	Sandslash-Alola	Eiscue	Walrein	Clefable		TRAINER_PIC_AQUA_GRUNT_M
+	Light Clay	Scope Lens	Scope Lens	Bright Powder	Weakness Policy
+
+Team Aqua Grunt Aqua Hideout #5	Aqua Hideout						
+	0x02026373	8F -> 9F
+	Gyarados	Gogoat	Raichu-Alola	Cursola			TRAINER_PIC_AQUA_GRUNT_F
+	Bright Powder	Assault Vest	Focus Band	Power Herb
+
+Team Aqua Grunt Aqua Hideout #6	Aqua Hideout						
+	0x02026370	24 -> 34
+	Politoed	Heliolisk	Noivern	Ferrothorn	Poliwrath		TRAINER_PIC_AQUA_GRUNT_M
+	Water Gem	Bright Powder	Bright Powder	Leftovers	Lum Berry
+
+Team Aqua Grunt Aqua Hideout #7	Aqua Hideout						
+	0x02026370	34 -> 3C
+	Carracosta	Octillery	Starmie	Gliscor	Goodra		TRAINER_PIC_AQUA_GRUNT_M
+	Quick Claw	Quick Claw	Life Orb	Toxic Orb	Leftovers
+
+Team Aqua Grunt Aqua Hideout #8	Aqua Hideout						
+	0x02026388	15 -> 17
+	Rillaboom	Wobbuffet	Tentacruel	Ludicolo	Ampharos	Obstagoon	TRAINER_PIC_AQUA_GRUNT_M
+	Focus Band	Leftovers	Black Sludge	Grass Gem	Quick Claw	Flame Orb
+
+Aqua Admin Matt [Boss]	Aqua Hideout						
+	0x020262DE	10 -> 11
+	Mamoswine	Dracovish	Dragapult	Kartana	Raikou	Gyarados-Mega	TRAINER_PIC_AQUA_ADMIN_M
+	Focus Sash	Choice Scarf	Dragon Gem	Life Orb	Water Gem	Gyaradosite
+
+Swimmer♀ Grace & Swimmer♂ Declan [Double]	Route 124						
+	0x020263A8	00 -> 04
+	Greninja	Dhelmise	Clawitzer		Pincurchin	Rillaboom	TRAINER_PIC_SWIMMER_M
+	Life Orb	Steel Gem	Focus Sash		Electric Gem	Assault Vest
+
+Swimmer♂ Cranberry	Route 124						
+	0x02026383	00 -> 80
+	Slurpuff	Nidoqueen	Azumarill	Snorlax	Wailord		TRAINER_PIC_SWIMMER_M
+	Focus Sash	Life Orb	Sitrus Berry	Custap Berry	Water Gem
+
+Triathlete Aubrey	Route 124						
+	0x020263A8	04 -> 06
+	Indeedee	Primarina	Flapple	Alakazam	Weavile	Slowbro	TRAINER_PIC_SWIMMING_TRIATHLETE_F
+	Focus Sash	Throat Spray	Petaya Berry	Life Orb	Dark Gem	Psychic Seed
+
+Psychic Preston & Psychic Maura [Double]	Mossdeep Gym						
+	0x0202638D	11 -> 13
+	Noivern	Gardevoir	Mismagius	Sylveon	Metagross	Drifblim	TRAINER_PIC_PSYCHIC_F
+	Life Orb	Lum Berry	Focus Sash	Fairy Gem	Weakness Policy	Weakness Policy
+
+Psychic Blake & Psychic Samantha [Double]	Mossdeep Gym						
+	0x0202638D	13 -> 1B
+	Porygon2	Jellicent	Hatterene	Perrserker	Bronzong	Rampardos	TRAINER_PIC_PSYCHIC_F
+	Eviolite	Water Gem	Fairy Gem	Occa Berry	Leftovers	Choice Band
+
+Psychic Virgil & Gentleman Nate [Double]	Mossdeep Gym						
+	0x0202638D	1B -> 1F
+	Krookodile	Mienshao	Delphox	Gothitelle	Flapple	Venomoth	TRAINER_PIC_GENTLEMAN
+	Salac Berry	Salac Berry	Focus Sash	Weakness Policy	Liechi Berry	Sitrus Berry
+
+Psychic Hannah & Battle Girl Sylvia [Double]	Mossdeep Gym						
+	0x0202638E	E8 -> F8
+	Meowstic-F	Milotic	Purugly	Conkeldurr	Gyarados	Rapidash-Galar	TRAINER_PIC_BATTLE_GIRL
+	Focus Sash	Leftovers	Silk Scarf	Assault Vest	Power Herb	Focus Sash
+
+Hex Maniac Kathleen & Psychic Nicholas [Double]	Mossdeep Gym						
+	0x020263B8	48 -> C8
+	Crobat	Togekiss	Jynx	Excadrill	Medicham	Cinderace	TRAINER_PIC_PSYCHIC_M
+	Flying Gem	Iapapa Berry	Focus Sash	Ground Gem	Focus Sash	Life Orb
+
+Gentleman Clifford & Psychic Macey [Double]	Mossdeep Gym						
+	0x020263B9	00 -> 80
+	Passimian	Greninja	Lycanroc-Dusk	Marill	Tauros	Golduck	TRAINER_PIC_PSYCHIC_F
+	Focus Sash	Expert Belt	Life Orb	Quick Claw	Dark Gem	Life Orb
+
+Leader Tate [Boss]	Mossdeep Gym						
+	0x020263DB	07 -> 27
+	Azelf	Latios-Mega	Zoroark	Hoopa			TRAINER_PIC_LEADER_TATE
+	Focus Sash	Latiosite	Dark Gem	Leftovers
+
+Leader Liza [Boss]	Mossdeep Gym						
+	0x020263DD 	9F -> BF
+	Tapu Lele	Latias	Metagross-Mega	Hoopa-Unbound			TRAINER_PIC_LEADER_LIZA
+	Assault Vest	Soul Dew	Metagrossite	Focus Sash
+
+Team Magma Grunt Space Center #1	Mossdeep Space Center						
+	0x02026372	BE -> FE
+	Steelix	Appletun	Zebstrika	Corviknight	Simisear		TRAINER_PIC_MAGMA_GRUNT_M
+	Bright Powder	Lum Berry	Focus Band	Weakness Policy	Focus Band
+
+Team Magma Grunt Space Center #2	Mossdeep Space Center						
+	0x020263B9	83 -> 8B
+	Scrafty	Duraludon	Exeggutor	Aerodactyl	Darmanitan	Weavile	TRAINER_PIC_MAGMA_GRUNT_M
+	Assault Vest	Iapapa Berry	Quick Claw	Scope Lens	Life Orb	Bright Powder
+
+Team Magma Grunt Space Center #3	Mossdeep Space Center						
+	0x020263B9	8B -> 8F
+	Diggersby	Silvally-Grass	Ribombee	Arcanine	Klinklang		TRAINER_PIC_MAGMA_GRUNT_F
+	Quick Claw	Grass Memory	Focus Band	Bright Powder	Choice Band
+
+Magma Admin Courtney	Mossdeep Space Center						
+	0x020262E7	7F -> FF
+	Shaymin	Dugtrio	Tyrantrum	Xurkitree	Buzzwole	Charizard-Mega-X	TRAINER_PIC_MAGMA_GRUNT_F
+	Life Orb	Air Balloon	Garchompite	Tyranitarite	Rocky Helmet	Fire Gem
+
+Team Magma Grunt Space Center #5	Mossdeep Space Center						
+	0x020263B9	8F -> 9F
+	Armaldo	Rotom-Heat					TRAINER_PIC_MAGMA_GRUNT_M
+	Bright Powder	White Herb
+
+Team Magma Grunt Space Center #6	Mossdeep Space Center						
+	0x020263B9	9F -> BF
+	Machamp	Talonflame					TRAINER_PIC_MAGMA_GRUNT_M
+	Quick Claw	Flying Gem
+
+Team Magma Grunt Space Center #7	Mossdeep Space Center						
+	0x020263B9	BF -> FF
+	Bisharp	Weezing-Galar	Guzzlord				TRAINER_PIC_MAGMA_GRUNT_M
+	Lum Berry	Black Sludge	Focus Band
+
+Magma Leader Maxie & Magma Admin Tabitha [Tag Battle] [Boss]	Mossdeep Space Center						
+	0x020262DE	11 -> 31
+	Landorus	Heatran	Garchomp-Mega	Tyranitar-Mega	Ferrothorn	Moltres	TRAINER_PIC_MAGMA_LEADER_MAXIE
+	Life Orb	Air Balloon	Garchompite	Tyranitarite	Rocky Helmet	Fire Gem
+
+Sis And Bro Lila And Roy [Double]	Route 124						
+	0x020263C5	00 -> 80
+	Ludicolo	Starmie	Dragonite	Stoutland	Lanturn	Blastoise	TRAINER_PIC_SIS_AND_BRO
+	Focus Sash	Life Orb	Lum Berry	Normal Gem	Life Orb	Lum Berry
+
+Swimmer♂ Dean	Route 126						
+	0x02026384	00 -> 10
+	Crustle	Turtonator	Polteageist	Minior	Shuckle	Smeargle	TRAINER_PIC_SWIMMER_M
+	White Herb	White Herb	White Herb	Flying Gem	Leftovers	Focus Sash
+
+Bird Keeper Camden & Battle Girl Donny [Double]	Route 127						
+	0x0202639E	02 -> 42
+	Staraptor	Vikavolt	Hydreigon	Lucario	Toxicroak	Infernape	TRAINER_PIC_BATTLE_GIRL
+	Focus Sash	Lum Berry	Dark Gem	Life Orb	Black Sludge	Focus Sash
+
+Swimmer♀ Carlee & Swimmer♂ Harrison [Double]	Route 128						
+	0x020263AA	E0 -> E1
+	Samurott-Hisui	Decidueye-Hisui	Typhlosion-Hisui	Alakazam	Lapras	Volcarona	TRAINER_PIC_SWIMMER_M
+	Assault Vest	Fighting Gem	Fire Gem	Focus Sash	Leftovers	Charti Berry
+
+Team Aqua Grunt Seafloor Cavern #1	Seafloor Cavern						
+	0x02026370	3C -> 7C
+	Kingdra	Exeggutor-Alola	Honchkrow	Magnezone	Crobat	Gorebyss	TRAINER_PIC_AQUA_GRUNT_M
+	Scope Lens	Quick Claw	Scope Lens	Assault Vest	Life Orb	White Herb
+
+Team Aqua Grunt Seafloor Cavern #2	Seafloor Cavern						
+	0x02026370	7C -> FC
+	Swampert	Gyarados	Haxorus	Muk-Alola	Roserade	Bruxish	TRAINER_PIC_AQUA_GRUNT_M
+	Rindo Berry	Wacan Berry	Lum Berry	Bright Powder	Bright Powder	Life Orb
+
+Team Aqua Grunt Seafloor Cavern #3	Seafloor Cavern						
+	0x02026371	8E -> 8F
+	Cloyster	Malamar	Aerodactyl	Froslass	Crawdaunt		TRAINER_PIC_AQUA_GRUNT_M
+	Bright Powder	Assault Vest	Choice Band	Bright Powder	Life Orb
+
+Team Aqua Grunt Seafloor Cavern #4	Seafloor Cavern						
+	0x02026371	8F -> CF
+	Scolipede	Drednaw	Dhelmise	Huntail			TRAINER_PIC_AQUA_GRUNT_F
+	Lum Berry	Leftovers	Quick Claw	White Herb
+
+Team Aqua Grunt Seafloor Cavern #5	Seafloor Cavern						
+	0x020263B6	41 -> C1
+	Ferrothorn	Sharpedo	Metagross	Zoroark	Salamence	Toxicroak	TRAINER_PIC_AQUA_GRUNT_M
+	Quick Claw	Bright Powder	Weakness Policy	Lum Berry	Life Orb	Focus Sash
+
+Aqua Admin Shelly	Seafloor Cavern						
+	0x02026374	39 -> 3B
+	Tapu Fini	Hawlucha	Gengar	Darmanitan-Galar	Kyurem	Slowbro-Mega	TRAINER_PIC_AQUA_ADMIN_F
+	Leftovers	Misty Seed	Focus Sash	Choice Band	Leftovers	Slowbronite
+
+Aqua Leader Archie Seafloor Cavern [Boss]	Seafloor Cavern						
+	0x020262E0	04 -> 06
+	Kyogre	Overqwil	Serperior	Aegislash	Zapdos	Swampert-Mega	TRAINER_PIC_AQUA_LEADER_ARCHIE
+	Custap Berry	Life Orb	Leftovers	Weakness Policy	Iapapa Berry	Swampertite
+
+Swimmer♂ Reed	Route 129						
+	0x020263C4	A0 -> A8
+	Stunfisk	Greninja	Cloyster	Archeops	Arcanine	Jolteon	TRAINER_PIC_SWIMMER_M
+	Shuca Berry	Focus Sash	White Herb	Power Herb	Leftovers	Life Orb
+
+Triathlete Chase & Triathlete Allison [Double]	Route 129						
+	0x0202639F	00 -> 04
+	Coalossal	Heliolisk	Lapras	Bruxish	Toucannon	Nidoking	TRAINER_PIC_SWIMMING_TRIATHLETE_F
+	Weakness Policy	Life Orb	Ice Gem	Light Clay	Life Orb	Focus Sash
+
+Swimmer♀ Tisha	Route 129						
+	0x020263C4	A8 -> B8
+	Copperajah	Vaporeon	Comfey	Falinks	Beartic	Poliwrath	TRAINER_PIC_SWIMMER_F
+	Focus Sash	Leftovers	Pixie Plate	Lum Berry	Life Orb	Sitrus Berry
+
+Swimmer♂ Clarence	Route 129						
+	0x020263B8	CC -> DC
+	Dragonite	Magnezone	Jynx	Armaldo	Tentacruel	Seismitoad	TRAINER_PIC_SWIMMER_M
+	Yache Berry	Custap Berry	Focus Sash	Lum Berry	Black Sludge	Life Orb
+
+Swimmer♂ Rodney	Route 130						
+	0x02026384	10 -> 30
+	Mantine	Gourgeist-Small	Drifblim	Masquerain	Blastoise	Pyukumuku	TRAINER_PIC_SWIMMER_M
+	Water Gem	Lum Berry	Focus Sash	Life Orb	Leftovers	Leftovers
+
+Swimmer♀ Katie	Route 130						
+	0x020263A8	06 -> 86
+	Kingdra	Rotom-Mow	Toxicroak	Goodra	Durant	Drednaw	TRAINER_PIC_SWIMMER_F
+	Dragon Gem	Iapapa Berry	Life Orb	Leftovers	Bug Gem	Choice Band
+
+Swimmer♂ Zappator	Route 131						
+	0x02026385	00 -> 08
+	Overqwil	Talonflame	Slurpuff	Venusaur	Electivire	Slowking	TRAINER_PIC_SWIMMER_M
+	Lum Berry	Flying Gem	Fairy Gem	Focus Sash	Life Orb	Colbur Berry
+
+Triathlete Xayah	Route 131						
+	0x020263A0	09 -> 0B
+	Komala	Charizard	Silvally-Ghost	Gliscor	Gastrodon	Primarina	TRAINER_PIC_SWIMMING_TRIATHLETE_F
+	Chople Berry	Charcoal	Ghost Memory	Flying Gem	Rindo Berry	Leftovers
+
+Sis And Bro Reli And Ian [Double]	Route 131						
+	0x020263C5	80 -> C0
+	Victreebel	Aerodactyl	Cinderace	Mimikyu	Ursaluna	Sharpedo	TRAINER_PIC_SIS_AND_BRO
+	Focus Sash	Rock Gem	Iapapa Berry	Fairy Gem	Assault Vest	Life Orb
+
+Swimmer♂ Herman	Route 131						
+	0x02026384	30 -> B0
+	Araquanid	Eelektross	Scrafty	Metagross	Porygon-Z	Jellicent	TRAINER_PIC_SWIMMER_M
+	Coba Berry	Assault Vest	Life Orb	Iapapa Berry	Chople Berry	Mystic Water
+
+Lass Andrea & Beauty Connie [Double]	Sootopolis Gym						
+	0x02026380	00 -> 01
+	Inteleon	Kangaskhan	Decidueye-Hisui	Tsareena	Toxicroak	Milotic	TRAINER_PIC_BEAUTY
+	Light Clay	Weakness Policy	White Herb	Sitrus Berry	Focus Sash	Lum Berry
+
+Beauty Bridget	Sootopolis Gym						
+	0x02026380	01 -> 03
+	Clefable	Greninja	Sandslash-Alola	Floatzel	Goodra-Hisui		TRAINER_PIC_BEAUTY
+	Life Orb	Lum Berry	Life Orb	Expert Belt	Leftovers
+
+Lady Daphne	Sootopolis Gym						
+	0x0202637E	14 -> 1C
+	Ribombee	Bruxish	Primarina	Samurott-Hisui	Dragapult	Roserade	TRAINER_PIC_LADY
+	Focus Sash	Tanga Berry	Kebia Berry	Chople Berry	Power Herb	Life Orb
+
+Pokéfan Bethany	Sootopolis Gym						
+	0x02026395	58 -> 78
+	Politoed	Copperajah	Seismitoad	Overqwil	Electrode-Hisui	Feraligatr	TRAINER_PIC_POKEFAN_F
+	Eject Button	Iapapa Berry	Focus Sash	Lum Berry	Life Orb	Life Orb
+
+Lass Crissy	Sootopolis Gym						
+	0x020263BC	A0 -> E0
+	Pincurchin	Silvally-Grass	Hydreigon	Raichu-Alola	Slowking-Galar	Clawitzer	TRAINER_PIC_LASS
+	Custap Berry	Grass Memory	Life Orb	Focus Sash	Electric Seed	Leftovers
+
+Lady Brianna	Sootopolis Gym						
+	0x0202637E	1C -> 5C
+	Kabutops	Gothitelle	Accelgor	Togedemaru	Whiscash		TRAINER_PIC_LADY
+	Focus Sash	Psychic Gem	Life Orb	Salac Berry	Rindo Berry
+
+Lass Pearl	Sootopolis Gym						
+	0x020263AE	20 -> 60
+	Cryogonal	Sigilyph	Electivire	Walrein	Beartic		TRAINER_PIC_LASS
+	Light Clay	Weakness Policy	Expert Belt	Leftovers	Ice Gem
+
+Beauty Tiffany & Beauty Olivia [Double]	Sootopolis Gym						
+	0x02026380	00 -> 04
+	Empoleon	Kommo-o	Mamoswine	Mr. Rime	Mandibuzz	Arctovish	TRAINER_PIC_BEAUTY
+	Safety Goggles	Throat Spray	Focus Sash	Focus Sash	Rocky Helmet	Water Gem
+
+Leader Juan [Double] [Boss]	Sootopolis Gym						
+	0x020263DD	BF -> FF
+	Sneasler	Glalie-Mega	Keldeo	Salamence	Basculegion	Glastrier	TRAINER_PIC_LEADER_JUAN
+	Focus Sash	Glalitite	Lum Berry	Yache Berry	Water Gem	Assault Vest
+
+Trainer Wally	Victory Road						
+	0x020263B0	03 -> 83
+	Vikavolt	Roserade	Azumarill	Genesect	Obstagoon	Gardevoir-Mega	TRAINER_PIC_WALLY
+	Focus Sash	Life Orb	Sitrus Berry	Focus Sash	Flame Orb	Gardevoirite
+
+Cool Trainer Hope & Cool Trainer Albert [Double]	Victory Road						
+	0x0202637C	00 -> 01
+	Mamoswine	Donphan	Venusaur-Mega	Aerodactyl-Mega	Staraptor	Hydreigon	TRAINER_PIC_COOLTRAINER_M
+	Lum Berry	Custap Berry	Venusaurite	Aerodactylite	Flying Gem	Fire Gem
+
+Cool Trainer Katelynn	Victory Road						
+	0x02026398	CF -> EF
+	Walrein	Yanmega	Ludicolo	Dugtrio	Magnezone	Pinsir-Mega	TRAINER_PIC_COOLTRAINER_F
+	Lum Berry	Leftovers	Eject Pack	Life Orb	Air Balloon	Pinsirite
+
+Cool Trainer Quincy	Victory Road						
+	0x02026398	EF -> FF
+	Carbink	Slowking	Trevenant	Muk	Kommo-o	Beedrill-Mega	TRAINER_PIC_COOLTRAINER_M
+	Leftovers	Assault Vest	Sitrus Berry	Black Sludge	Dragon Gem	Beedrillite
+
+Cool Trainer Felix	Victory Road						
+	0x02026374	3F -> 7F
+	Rillaboom	Tyranitar	Clefable	Arcanine-Hisui	Inteleon	Ampharos-Mega	TRAINER_PIC_COOLTRAINER_M
+	Focus Sash	Dark Gem	Grassy Seed	Lum Berry	Flying Gem	Ampharosite
+
+Cool Trainer Julie & Cool Trainer Dianne [Double]	Victory Road						
+	0x0202637C	01 -> 11
+	Sceptile-Mega	Sirfetch’d	Florges	Golisopod	Honchkrow	Kangaskhan-Mega	TRAINER_PIC_COOLTRAINER_F
+	Sceptilite	Fighting Gem	Salac Berry	Assault Vest	Focus Sash	Kangaskhanite
+
+Cool Trainer Samuel	Victory Road						
+	0x0202637A	01 -> 03
+	Scolipede	Garchomp	Tauros	Gyarados	Eelektross	Blaziken-Mega	TRAINER_PIC_COOLTRAINER_M
+	Focus Sash	Life Orb	Life Orb	Lum Berry	Assault Vest	Blazikenite
+
+Cool Trainer Shannon	Victory Road						
+	0x0202637C	11 -> 13
+	Pelipper	Gorebyss	Dragonite	Scizor	Whimsicott	Swampert-Mega	TRAINER_PIC_COOLTRAINER_F
+	Wacan Berry	White Herb	Lum Berry	Steel Gem	Life Orb	Swampertite
+
+Cool Trainer Caroline	Victory Road						
+	0x0202637C	13 -> 1B
+	Mudsdale	Ferrothorn	Blastoise	Zoroark-Hisui	Braviary-Hisui	Gallade-Mega	TRAINER_PIC_COOLTRAINER_F
+	Assault Vest	Occa Berry	White Herb	Focus Sash	Life Orb	Galladite
+
+Cool Trainer Michelle	Victory Road						
+	0x0202637C	1B -> 1F
+	Slurpuff	Darmanitan	Chandelure	Gliscor	Hydreigon	Heracross-Mega	TRAINER_PIC_COOLTRAINER_F
+	Focus Sash	Life Orb	Choice Specs	Toxic Orb	Lum Berry	Heracronite
+
+Cool Trainer Specter	Victory Road						
+	0x0202637A	03 -> 0B
+	Snorlax	Salamence	Breloom	Metagross	Starmie	Sableye-Mega	TRAINER_PIC_COOLTRAINER_M
+	Custap Berry	Life Orb	Focus Sash	Weakness Policy	Power Herb	Sablenite
+
+Cool Trainer Edgar	Victory Road						
+	0x02026379	47 -> C7
+	Charizard-Mega-Y	Rhyperior	Lilligant-Hisui	Ninetales-Alola	Venusaur	Goodra	TRAINER_PIC_COOLTRAINER_M
+	Charizardite Y	Leftovers	Flying Gem	Focus Sash	Life Orb	Assault Vest
+
+Triathlete Darren	Victory Road						
+	0x020263B3	04 -> 14
+	Archeops	Wobbuffet	Nidoking	Dragapult	Pikachu	Charizard-Mega-X	TRAINER_PIC_RUNNING_TRIATHLETE_M
+	Flying Gem	Iapapa Berry	Focus Sash	Life Orb	Light Ball	Charizardite X
+
+Cool Trainer Halle	Victory Road						
+	0x020263B4	02 -> 06
+	Golem	Turtonator	Floette-Eternal	Escavalier	Weavile	Mawile-Mega	TRAINER_PIC_COOLTRAINER_F
+	Custap Berry	Leftovers	Sitrus Berry	Assault Vest	Focus Sash	Mawilite
+
+Winstrate Vito Victory Road [Boss]	Victory Road						
+	0x0202637A	0B -> 0F
+	Indeedee	Aggron	Pheromosa	Cloyster	Hawlucha	Alakazam-Mega	TRAINER_PIC_COOLTRAINER_M
+	Focus Sash	Custap Berry	Life Orb	Focus Sash	Psychic Seed	Alakazite
+
+Elite Four Sidney	Elite Four
+	0x0202636F	00 -> 08
+	Greninja	Necrozma	Nidoking	Urshifu	Yveltal	Gyarados-Mega	TRAINER_PIC_ELITE_FOUR_SIDNEY
+	Focus Sash	Leftovers	Life Orb	Roseli Berry	Dread Plate	Gyaradosite
+
+Elite Four Sidney Double	Elite Four
+	0x0202636F	00 -> 08
+	Incineroar	Articuno-Galar	Overqwil	Urshifu	Darkrai	Gyarados-Mega	TRAINER_PIC_ELITE_FOUR_SIDNEY
+	Iapapa Berry	Lum Berry	Assault Vest	Focus Sash	Life Orb	Gyaradosite
+
+Elite Four Phoebe	Elite Four
+	0x0202636F	08 -> 18
+	Crobat	Zoroark-Hisui	Gothitelle	Lunala	Marshadow	Gengar-Mega	TRAINER_PIC_ELITE_FOUR_PHOEBE
+	Flying Gem	Life Orb	Assault Vest	Power Herb	Lum Berry	Gengarite
+
+Elite Four Phoebe Double	Elite Four
+	0x0202636F	08 -> 18
+	Decidueye-Hisui	Chandelure	Blastoise	Lunala	Giratina-Origin	Gengar-Mega	TRAINER_PIC_ELITE_FOUR_PHOEBE
+	Focus Sash	Kasib Berry	Iapapa Berry	Power Herb	Griseous Orb	Gengarite
+
+Elite Four Glacia	Elite Four
+	0x0202636F	18 -> 38
+	Mamoswine	Abomasnow-Mega	Arctovish	Enamorus-T	Kyurem-White	Calyrex-Ice	TRAINER_PIC_ELITE_FOUR_GLACIA
+	Focus Sash	Abomasite	Ice Gem	Leftovers	Assault Vest	Custap Berry
+
+Elite Four Glacia Double	Elite Four
+	0x0202636F	18 -> 38
+	Magearna	Crabominable	Abomasnow-Mega	Porygon2	Calyrex-Ice	Kyurem-Black	TRAINER_PIC_ELITE_FOUR_GLACIA
+	Occa Berry	Focus Sash	Abomasite	Eviolite	Ice Gem	Room Service
+
+Elite Four Drake	Elite Four
+	0x0202636F	38 -> 78
+	Dragapult	Crawdaunt	Zygarde	Suicune	Reshiram	Salamence-Mega	TRAINER_PIC_ELITE_FOUR_DRAKE
+	Life Orb	Focus Sash	Haban Berry	Leftovers	Lum Berry	Salamencite
+
+Elite Four Drake Double	Elite Four
+	0x0202636F	38 -> 78
+	Dragapult	Suicune	Zygarde	Charizard	Zekrom	Salamence-Mega	TRAINER_PIC_ELITE_FOUR_DRAKE
+	Focus Sash	Leftovers	Leftovers	Life Orb	White Herb	Salamencite
+
+Champion Wallace	Elite Four
+	0x02026399	60 -> E0
+	Kyogre-Primal	Barraskewda	Goodra-Hisui	Palkia	Manaphy	Swampert-Mega	TRAINER_PIC_CHAMPION_WALLACE
+	Blue Orb	Choice Band	Leftovers	Scope Lens	Leftovers	Swampertite
