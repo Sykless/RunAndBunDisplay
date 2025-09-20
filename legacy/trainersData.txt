@@ -536,7 +536,7 @@ Black Belt Daisuke	Route 111
 Cool Trainer Brooke	Route 111						
 	0x0202637B	0E -> 4E
 	Vanilluxe	Tentacruel	Dewgong	Magmortar	Beartic		TRAINER_PIC_COOLTRAINER_F
-	Sitrus Berry	Flame Orb
+	Lum Berry	Safety Goggles	Leftovers	Safety Goggles	White Herb
 
 Pokémaniac Wyatt	Route 113						
 	0x020263C8	0F -> 8F
