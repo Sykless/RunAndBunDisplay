@@ -7,3 +7,7 @@ DISPLAY_SPRITE_ITEMS=1
 -- Trainer Card
 DISPLAY_TRAINER_ITEMS=1
 DISPLAY_TRAINER_BACKGROUND=1
+
+-- Alternate between each box (5 seconds each by default)
+DISPLAY_MULTIPLE_BOXES=1
+BOX_DISPLAY_TIME=5

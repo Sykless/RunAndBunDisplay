@@ -4,7 +4,7 @@ import time
 import subprocess
 from PIL import Image, ImageEnhance
 
-CLOCK = 0
+LEVELUP_CLOCK = 0
 
 TRAINERS_START = 0X020262DD
 
@@ -24,6 +24,8 @@ DISPLAY_SPRITE_LEVELUP = "DISPLAY_SPRITE_LEVELUP"
 DISPLAY_SPRITE_ITEMS = "DISPLAY_SPRITE_ITEMS"
 DISPLAY_TRAINER_ITEMS = "DISPLAY_TRAINER_ITEMS"
 DISPLAY_TRAINER_BACKGROUND = "DISPLAY_TRAINER_BACKGROUND"
+DISPLAY_MULTIPLE_BOXES = "DISPLAY_MULTIPLE_BOXES"
+BOX_DISPLAY_TIME = "BOX_DISPLAY_TIME"
 
 POKEMON_SPRITE_WIDTH = 80
 POKEMON_SPRITE_HEIGHT = 60
@@ -232,7 +234,7 @@ def readConfFile():
     for line in configurationFile.splitlines():
         if (line.count("=") == 1):
             configurationSplit = line.split("=")
-            configuration[configurationSplit[0]] = (configurationSplit[1] != "0")
+            configuration[configurationSplit[0]] = int(configurationSplit[1])
 
     return configuration
 
@@ -311,7 +313,7 @@ def buildPlayerPokemonImage(label, pokemonList, columnNumber, rowNumber, levelCa
 
         # Display level up sprite if current level is lower than level cap
         if (configuration[DISPLAY_SPRITE_LEVELUP] and levelCap and pokemonData.level < int(levelCap)):
-            outputImage.paste(levelUpSprite, (x + LEVELUP_X_POSITION, y + LEVELUP_Y_POSITION + CLOCK), levelUpSprite)
+            outputImage.paste(levelUpSprite, (x + LEVELUP_X_POSITION, y + LEVELUP_Y_POSITION + LEVELUP_CLOCK), levelUpSprite)
 
     # Save final image in output folder
     safeWriteFile(outputImage, label)
@@ -391,11 +393,14 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
 
 # Main loop
 def mainLoop():
-    global CLOCK # global clock to alternate between up and down level up sprite position
+    global LEVELUP_CLOCK # global LEVELUP_CLOCK to alternate between up and down level up sprite position every second
     os.makedirs(OUTPUT_FOLDER, exist_ok = True) # Create outputImage folder is not exists
     os.makedirs(TEMPOUTPUT_FOLDER, exist_ok = True) # Create .tmp folder is not exists
     subprocess.run(["attrib", "+h", TEMPOUTPUT_FOLDER], shell = True)
     print("Run&BunDisplay en cours d'exécution...") # Notify user when ready to use
+
+    boxClock = 0 # Alternate between every box every 5 seconds
+    boxNumber = 0 # Track which box we're currently displaying
 
     while True:
         try:
@@ -405,13 +410,26 @@ def mainLoop():
             if emulatorData:
                 lines = emulatorData.splitlines()
 
+                # Retrieve conf file content to check user preferences
+                configuration = readConfFile()
+                displayMultipleBoxes = configuration[DISPLAY_MULTIPLE_BOXES]
+                boxDisplayTime = configuration[BOX_DISPLAY_TIME]
+
                 # Retrieve each line and parse its data
                 for line in lines:
                     if line.startswith("PARTY"):
                         partyLine = parseLine(line)
                         
                     elif line.startswith("BOX"):
-                        boxLine = parseLine(line)
+                        fullBox = parseLine(line)
+                        numberOfBoxes = int(len(fullBox) / 30) if fullBox else 1
+
+                        # 5th second : display next box
+                        if (boxClock == boxDisplayTime - 1):
+                            boxNumber = (boxNumber + 1) % numberOfBoxes if displayMultipleBoxes else 0
+
+                        # Take the 30 Pokémon from the provided box
+                        boxLine = fullBox[30*boxNumber : 30*(boxNumber + 1)]
                         
                     elif line.startswith("DEAD"):
                         deadLine = parseLine(line)
@@ -433,7 +451,8 @@ def mainLoop():
                         
             # Check file every second
             time.sleep(1)
-            CLOCK = 1 - CLOCK
+            LEVELUP_CLOCK = (LEVELUP_CLOCK + 1) % 1 # Every second
+            boxClock = (boxClock + 1) % boxDisplayTime # Every 5 seconds by default, customizable
         
         # Don't stop script if an error occurs, just print it in the logs
         except Exception as e:

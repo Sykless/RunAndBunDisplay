@@ -6,3 +6,13 @@
 outputImage/
 
 pokemonData.txt
+
+*.toc
+
+*.zip
+
+*.pyc
+
+*.pkg
+
+dist/

@@ -236,6 +236,9 @@ function updateBuffer()
         local address = storageLoc + 4
 		local i = 0
 
+		local emptyBox = false
+		local alivePokemon = true
+
         local partyPokemon = "PARTY"
         local boxPokemon = "BOX"
         local deadPokemon = "DEAD"
@@ -251,27 +254,39 @@ function updateBuffer()
 
 		-- Retrieve PC Pokémon (box + dead)
 		while i < 420 do
-            if (i < 30 or i >= 390) then
-				if (i < 30) then
-					boxPokemon = boxPokemon .. "|"
+            if alivePokemon then
+				boxPokemon = boxPokemon .. "|"
+			elseif i >= 390 then
+				deadPokemon = deadPokemon .. "|"
+			end
+
+			-- If no Pokémon was found in the box, stop parsing alive Pokémon
+			if (i % 30 == 0) then
+				if emptyBox then
+					if alivePokemon then
+						alivePokemon = false
+						boxPokemon = string.sub(boxPokemon, 1, #boxPokemon - 31) -- Remove last 30 empty Pokémon
+					end
 				else
-					deadPokemon = deadPokemon .. "|"
+					emptyBox = true
 				end
+			end
 
-				-- Only read valid data
-				if (emu:read32(address) ~=0) then
-					mon = readBoxMon(address)
+			-- Only read valid data
+			if (emu:read32(address) ~=0) then
+				mon = readBoxMon(address)
 
-					-- Pokémon found : add it to data file
-					if (mon.species ~= 0) then
-						if (i < 30) then
-							boxPokemon = boxPokemon .. mon.species .. "-" .. calcLevel(mon.experience, mon.species) .. "-" .. mon.heldItem
-						else
-							deadPokemon = deadPokemon .. mon.species .. "-0-" .. mon.heldItem -- No need to calc level for dead Pokémon
-						end
+				-- Pokémon found : add it to data file
+				if (mon.species ~= 0) then
+					emptyBox = false
+					
+					if (alivePokemon) then
+						boxPokemon = boxPokemon .. mon.species .. "-" .. calcLevel(mon.experience, mon.species) .. "-" .. mon.heldItem
+					else
+						deadPokemon = deadPokemon .. mon.species .. "-0-" .. mon.heldItem -- No need to calc level for dead Pokémon
 					end
 				end
-            end
+			end
 
             address = address + 80
             i = i + 1
