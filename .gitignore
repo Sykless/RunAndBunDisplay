@@ -1,18 +1,15 @@
 
 .tmp/
-
 .vscode/
-
 outputImage/
+dist/
 
 pokemonData.txt
+runs.json
 
 *.toc
-
 *.zip
-
 *.pyc
-
 *.pkg
-
-dist/
+*.key
+*.exe
