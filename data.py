@@ -2121,8 +2121,8 @@ ZONE_NAMES = [
     "Route 132",
     "Route 133",
     "Route 134",
-    "Underwater (Route 124)",
-    "Underwater (Route 126)",
+    "Route 124 Underwater",
+    "Route 126 Underwater",
     "Underwater (Route 127)",
     "Underwater (Route 128)",
     "Underwater (Sootopolis City)",
@@ -2406,3 +2406,5 @@ FULLDATA_ZONE = {
 	"Sky Pillar": None,
 	"Victory Road": None
 }
+
+ZONE_ORDER = list(FULLDATA_ZONE.keys())

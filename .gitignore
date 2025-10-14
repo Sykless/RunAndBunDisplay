@@ -5,7 +5,7 @@ outputImage/
 dist/
 
 pokemonData.txt
-runs.json
+runsHistory.json
 
 *.toc
 *.zip

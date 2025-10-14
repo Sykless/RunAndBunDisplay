@@ -362,7 +362,7 @@ function updateBuffer()
 			local f = io.open(dataFilePath, "w")
 
 			if f then
-				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter .. "\n" .. teamFullData)
+				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. teamFullData .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter)
 				f:close()
 			else
 				displayBuffer:print("Cannot write pokemon data\n")

@@ -6,7 +6,7 @@ import orjson
 TEMPOUTPUT_FOLDER = ".tmp"
 OUTPUT_FOLDER = "outputImage"
 CONF_FILE = "configuration.txt"
-RUNS_FILE = "runs.json"
+RUNS_FILE = "runsHistory.json"
 
 # Read file safely even if used by lua script
 def safeReadFile(path):
@@ -48,26 +48,23 @@ def readConfFile():
     return configuration
 
 
-# Load runs.json into json data
+# Load runsHistory.json into json data
 def loadJsonRuns():
     if os.path.exists(RUNS_FILE):
         with open(RUNS_FILE, "r", encoding="utf-8") as f:
             try:
                 return json.load(f)
             except json.JSONDecodeError:
-                print("⚠️ runs.json corrupted, reinitializing.")
+                print("⚠️ runsHistory.json corrupted, reinitializing.")
     return {"runs": {}}
 
 
 # Parse json runs into object and make sure it's initialized
-def loadRunDict(runId):
+def loadAllRuns():
     runsData = loadJsonRuns()
 
     if "runs" not in runsData:
         runsData["runs"] = {}
-
-    if runId not in runsData["runs"]:
-        runsData["runs"][runId] = {}
 
     return runsData
 
@@ -77,7 +74,7 @@ def saveRuns(runsData):
     data = orjson.dumps(runsData, option = orjson.OPT_INDENT_2 | orjson.OPT_APPEND_NEWLINE).decode("utf-8")
     data = re.sub(r'\[\s+([^]]+?)\s+\]', lambda m: '[' + ' '.join(m.group(1).split()) + ']', data)
     
-    with open("runs.json", "w", encoding = "utf-8") as f:
+    with open("runsHistory.json", "w", encoding = "utf-8") as f:
         f.write(data)
 
 
@@ -90,21 +87,21 @@ def loadKeys():
         return None
 
     # Take first one available (should only be one anyway)
-    keyPath = keyFiles[0]
+    with open(keyFiles[0], "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    try:
-        with open(keyPath, "r", encoding="utf-8") as f:
-            data = json.load(f)
+    # Make sure every parameter is present
+    mandatoryKeys = {
+        "spreadsheet.sheetId": data.get("spreadsheet", {}).get("sheetId"),
+        "spreadsheet.spreadsheetId": data.get("spreadsheet", {}).get("spreadsheetId"),
+        "api.url": data.get("api", {}).get("url"),
+        "api.password": data.get("api", {}).get("password")
+    }
 
-        # Make sure every parameter is present
-        sheetId = data.get("spreadsheet", {}).get("sheetId")
-        spreadsheetId = data.get("spreadsheet", {}).get("spreadsheetId")
-
-        if not sheetId or not spreadsheetId:
+    for keyName, keyValue in mandatoryKeys.items():
+        if (not keyValue):
+            print(f"❌ Missing parameter {keyName} in key file")
             return None
 
-        return data
-
-    except (OSError, json.JSONDecodeError):
-        return None
+    return data
 

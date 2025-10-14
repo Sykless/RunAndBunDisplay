@@ -12,5 +12,9 @@ DISPLAY_TRAINER_BACKGROUND=1
 DISPLAY_MULTIPLE_BOXES=1
 BOX_DISPLAY_TIME=5
 
--- Enable run tracking in Google Sheets (requires .key file : contact developer)
-ENABLE_RUN_TRACKING=1
+-- Set from which zone we start tracking runs in Google Sheets (requires .key file : contact developer) 
+--    0 : Disable run tracking
+--    1 : Starter Pack (Route 101 + Route 102 + Route 103)
+--    2 : Myokara (default)
+--    3 : Route 110
+ZONE_START_RUN_TRACKING=2

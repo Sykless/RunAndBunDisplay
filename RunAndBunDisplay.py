@@ -1,20 +1,26 @@
 import os
 import sys
+import json
 import copy
 import file
 import time
+import win32api
 import requests
 import subprocess
 from PIL import Image, ImageEnhance
+from datetime import datetime
 
-from data import LEVEL_CAPS, PETALBURG_GYM_SAMELEVELS, TRAINER_RIVAL, MOVE_NAMES, POKEMON_NAMES, ZONE_NAMES, FULLDATA_ZONE
+from data import LEVEL_CAPS, PETALBURG_GYM_SAMELEVELS, TRAINER_RIVAL, MOVE_NAMES, POKEMON_NAMES, ZONE_NAMES, FULLDATA_ZONE, ZONE_ORDER
 from trainer import TRAINER_ADDRESS_DICT, TRAINERLIST
 from file import TEMPOUTPUT_FOLDER, OUTPUT_FOLDER
 
 LEVELUP_CLOCK = 0
+BUFFER_UPLOAD_CLOCK = 0
+BUFFER_UPLOAD_FREQUENCY = 60 # Every 60 seconds
 
 GIFT_EGG = 253
 FATEFUL_ENCOUNTER = 255
+
 TRAINERS_START = 0X020262DD
 
 INPUT_FILE = "pokemonData.txt"
@@ -31,7 +37,13 @@ DISPLAY_TRAINER_ITEMS = "DISPLAY_TRAINER_ITEMS"
 DISPLAY_TRAINER_BACKGROUND = "DISPLAY_TRAINER_BACKGROUND"
 DISPLAY_MULTIPLE_BOXES = "DISPLAY_MULTIPLE_BOXES"
 BOX_DISPLAY_TIME = "BOX_DISPLAY_TIME"
-ENABLE_RUN_TRACKING = "ENABLE_RUN_TRACKING"
+ZONE_START_RUN_TRACKING = "ZONE_START_RUN_TRACKING"
+
+ZONES_START_TRACKING = [
+    ["Route 101"],
+    ["Dewford Town", "Route 106", "Route 107"],
+    ["Route 110"]
+]
 
 POKEMON_SPRITE_WIDTH = 80
 POKEMON_SPRITE_HEIGHT = 60
@@ -55,6 +67,10 @@ TRAINER_ITEMS_SPRITE_SIZE = 64
 
 TRAINER_ITEM_X_POSITION = 84
 TRAINER_ITEM_Y_POSITION = 56
+
+# Retrieve runsHistory.json content once on startup
+runsDict = file.loadAllRuns()
+runBuffer = {"runs": {}, "newRuns": []}
 
 class PokemonData:
     def __init__(self, pokedexId, level, itemId):
@@ -94,6 +110,9 @@ class PokemonFullData:
     def __str__(self):
         return f'{self.pid} - {self.nickname} ({POKEMON_NAMES[self.pokedexId]}) - lvl {self.level} - {self.zone} - {self.ability} - {self.nature} - {"/".join(self.moves)} - {"/".join(self.IVs)}{("" if self.alive else " - 💀")}'
 
+    def __repr__(self):
+        return "\n\t" + str(self) + "\n"
+
 
 # Create env variable for pokemonData.txt file so lua script can know its path
 def ensureSetup():
@@ -107,7 +126,7 @@ def ensureSetup():
         ownPath = os.path.dirname(os.path.abspath(__file__))
         
     # Set path as global env variable
-    confFilePath = os.path.join(ownPath, 'pokemonData.txt')
+    confFilePath = os.path.join(ownPath, INPUT_FILE)
     os.system(f'setx RUNANDBUNREADER_CONFFILE "{confFilePath}"')
 
 
@@ -306,6 +325,10 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
     # Default level cap is 12 when you start a playthrough
     levelCap = 12
 
+    # Save number of gym badges and won battles for run tracking
+    gymBadges = 0
+    wonBattles = 0
+
     # Set all trainers as undefeated by default
     for trainer in TRAINERLIST:
         trainer.defeated = False
@@ -323,8 +346,10 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
     for trainerId in range(len(TRAINERLIST)):
         trainer = TRAINERLIST[trainerId]
 
-        if (trainer.defeated):
+        # Defeated trainer (Elite Four resets after Wallace is defeated)
+        if (trainer.defeated or "Elite Four" in trainer.name and TRAINERLIST[-1].defeated):
             lastDefeatedTrainerId = trainerId
+            wonBattles += 1
 
             # Increase level cap when a boss is defeated
             if ("[Boss]" in trainer.name and trainer.name in LEVEL_CAPS):
@@ -334,6 +359,10 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
             if ("Room]" in trainer.name):
                 for sameLevelId in PETALBURG_GYM_SAMELEVELS[trainer.name]:
                     TRAINERLIST[trainerId + sameLevelId].defeated = True
+
+            # Increase number of badges if a gym leader is defeated, except Leader Tate because only Liza gives the badge
+            if (trainer.name.startswith("Leader") and "Tate" not in trainer.name):
+                gymBadges += 1
 
         # Trainer not defeated
         else:
@@ -363,40 +392,38 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
     # Generate trainer image
     generateTrainerCard(nextTrainer)
 
-    # Save level cap so we can use it for level up sprites
-    return levelCap
+    # Save level cap, won battles, gym badges and lastDefeatedTrainer so we can use them for level up sprites and run tracking
+    return levelCap, wonBattles, gymBadges, TRAINERLIST[lastDefeatedTrainerId if lastDefeatedTrainerId >= 0 else 0]
 
 
 
 # Send data to RunAndBunStats API
-def sendPokemonData(methodName, pokemonList):
+def sendRunData(updatedData):
     keys = file.loadKeys()
 
     # Only send data with valid keys
     if (keys):
+        jsonData = json.dumps({
+            "keys": keys["spreadsheet"],
+            "updatedData": updatedData
+        }, default = lambda o: o.__dict__)
 
-        # Send keys and pokemonData to RunAndBunStats API
-        response = requests.post(f"http://127.0.0.1:5000/{methodName}", json = {
-            "keys": keys,
-            "pokemonData": {key: pokemon.__dict__ if pokemon else None for key, pokemon in pokemonList.items()}
-        })
+        # Send keys and updatedData to RunAndBunStats API
+        response = requests.post(keys["api"]["url"] + "/updateRun",
+            data = jsonData,
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {keys["api"]["password"]}"
+            }
+        )
 
         # Logs API repsonse
-        if response.status_code == 200:
-            print("✅ Data sent successfully.")
-        else:
-            print(f"❌ Failed to send data: {response.status_code} - {response.text}")
-    else:
-        print(f"❌ Invalid keys")
+        if response.status_code != 200:
+            print(f"❌ Failed to send data: {response.status_code} - {response.text}\n")
 
 
-def initRun():
-    sendPokemonData("initRun", FULLDATA_ZONE)
-
-
-def uploadPokemonData(fullDataLine):
+def mapPokemonToZone(fullDataLine):
     pokemonDataZone = copy.deepcopy(FULLDATA_ZONE)
-    pokemonToUpdate = {}
     tradedPokemonList = {}
     possibleOriginalZones = {}
 
@@ -405,7 +432,7 @@ def uploadPokemonData(fullDataLine):
         if (pokemonData.zone in pokemonDataZone):
             pokemonDataZone[pokemonData.zone] = pokemonData
         else:
-            customZone = f"{pokemonData.zone} ({pokemonData.pid})"
+            customZone = f"{pokemonData.zone} ({pokemonData.pid}-{pokemonData.nickname})"
             pokemonDataZone[customZone] = pokemonData
 
             if (pokemonData.zone == "In-game Trade"):
@@ -436,39 +463,222 @@ def uploadPokemonData(fullDataLine):
             pokemonDataZone[bestZoneName] = pokemonDataZone[customZone]
             del pokemonDataZone[customZone]
 
-    # Only take into accounts runs with Pokémons from Routes 101-102-103 (for runId) and at least one Pokémon from Myokara
-    if (pokemonDataZone["Route 101"] and pokemonDataZone["Route 102"] and pokemonDataZone["Route 103"]
-        and (pokemonDataZone["Dewford Town"] or pokemonDataZone["Route 106"] or pokemonDataZone["Route 107"])):
+    return pokemonDataZone
+
+
+# Set current time as end date for all non-ended runs
+def updateOldRunsEndDate(currentRunId, currentTime):
+    for runId, runData in runsDict["runs"].items():
+        if (runId != currentRunId and not runData["runData"]["runEnd"]):
+
+            # Update run end date in runsHistory.json
+            runsDict["runs"][runId]["runData"]["runEnd"] = currentTime
+
+            # Save run end update in buffer
+            if runId not in runBuffer["runs"]:
+                runBuffer["runs"][runId] = {"pokemonToUpdate": {}, "runDataToUpdate": {}, "releasedPokemon": {}}
+            runBuffer["runs"][runId]["runDataToUpdate"] = runsDict["runs"][runId]["runData"]
+
+
+# Save each update in a buffer that is uploaded every minute
+def updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer):
+    global runBuffer
+    currentPokemon = {}
+    configuration = file.readConfFile()
+
+    # Don't track runs if disabled by user
+    if (configuration[ZONE_START_RUN_TRACKING]):
+
+        # Map each encounter to its caught zone
+        pokemonDataZone = mapPokemonToZone(fullDataLine)
+
+        # Only take into accounts runs with Pokémons from Routes 101-102-103 (for runId)
+        if (pokemonDataZone["Route 101"] and pokemonDataZone["Route 102"] and pokemonDataZone["Route 103"]):
+            
+            # Create unique runId from Route 101-102-103 encounters PIDs
+            currentRunId = pokemonDataZone["Route 101"].pid + "-" + pokemonDataZone["Route 102"].pid + "-" + pokemonDataZone["Route 103"].pid
+
+            # New run : initialize it
+            if currentRunId not in runsDict["runs"]:
+                currentTime = datetime.now().strftime("%d/%m/%Y %H:%M")
+                runStart = currentTime
+
+                # Initialize dict and run start time
+                runsDict["runs"][currentRunId] = {"runData": {
+                    "runNumber": -1, "runStart": "", "runEnd": "", "deadPokemon": "", "wonBattles": "", "gymBadges": 0, "personalBest": {"trainerName": {}, "trainerTeam": []}
+                }, "pokemonData": {}}
+
+                # We started a new run : update old run end date
+                updateOldRunsEndDate(currentRunId, currentTime)
+
+            # Existing run : retrieve runStart from runsHistory.json
+            else:
+                runStart = runsDict["runs"][currentRunId]["runData"]["runStart"]
+            
+            # Init buffer for current run
+            if currentRunId not in runBuffer["runs"]:
+                runBuffer["runs"][currentRunId] = {"pokemonToUpdate": {}, "runDataToUpdate": {}, "releasedPokemon": {}}
+
+            # Populate currentPokemon object with runsHistory.json file data
+            for zone, pokemonData in runsDict["runs"][currentRunId]["pokemonData"].items():
+                currentPokemon[zone] = PokemonFullData(*pokemonData)
+
+            # Track run data
+            deadPokemon = 0
+            totalPokemon = 0
+            runNumber = runsDict["runs"][currentRunId]["runData"]["runNumber"]
+
+            # Check which Pokémon have been updated
+            for zone, pokemon in pokemonDataZone.items():
+
+                # Missing Pokémon
+                if (pokemon == None and zone in currentPokemon):
+                    releasedPokemon = runBuffer["runs"][currentRunId]["releasedPokemon"]
+
+                    # Increase number of occurrences missing
+                    releasedPokemon[zone] = releasedPokemon.get(zone, 0) + 1
+
+                    # Pokémon disappear and reappear when picked up in PC, so only considered them released when gone for the whole BUFFER_UPLOAD_FREQUENCY
+                    if (releasedPokemon[zone] == BUFFER_UPLOAD_FREQUENCY):
+                        runBuffer["runs"][currentRunId]["pokemonToUpdate"][zone] = None
+                        del runsDict["runs"][currentRunId]["pokemonData"][zone]
+                    
+                    # Default : Replace missing pokemon with previously saved data
+                    else:
+                        pokemon = currentPokemon[zone]
+
+                # Pokemon currently in the run
+                if (pokemon):
+                    if (not pokemon.alive):
+                        deadPokemon += 1
+                    totalPokemon += 1
+
+                    # New or updated Pokémon : save it in Sheets
+                    if (zone not in currentPokemon or currentPokemon[zone] != pokemon):
+                        runBuffer["runs"][currentRunId]["pokemonToUpdate"][zone] = pokemon
+
+            # Only start tracking runs when reached the tracking zone
+            trackRun = False
+            trackingZones = ZONES_START_TRACKING[configuration[ZONE_START_RUN_TRACKING] - 1 if 1 <= configuration[ZONE_START_RUN_TRACKING] <= 3 else 1]
+
+            for zone in trackingZones:
+                if pokemonDataZone[zone]: trackRun = True
+
+            # If a run reached a tracking zone, consider it valid and assign it a run number
+            if (runNumber == -1 and trackRun):
+                runNumber = getNumberOfRuns() + 1
+
+                # Set this run as a new run so it can be initialised on Google Sheets
+                runBuffer["newRuns"].append(currentRunId)
+
+                # Include all run data from the run in the buffer
+                runBuffer["runs"][currentRunId]["runDataToUpdate"] = runsDict["runs"][currentRunId]["runData"]
+
+                # Include all Pokémon from the run in the buffer
+                for zone, pokemonData in runsDict["runs"][currentRunId]["pokemonData"].items():
+                    runBuffer["runs"][currentRunId]["pokemonToUpdate"][zone] = PokemonFullData(*pokemonData)
+
+            # Convert current run data to dict
+            currentRunData = {
+                "runNumber": runNumber,
+                "runStart": runStart,
+                "runEnd": runsDict["runs"][currentRunId]["runData"]["runEnd"],
+                "wonBattles": f"{wonBattles}/{len(TRAINERLIST)}",
+                "deadPokemon": f"{deadPokemon}/{totalPokemon}",
+                "gymBadges": gymBadges,
+                "personalBest": {
+                    "trainerName": lastDefeatedTrainer.name,
+                    "trainerSprite": lastDefeatedTrainer.spriteName,
+                    "trainerTeam": lastDefeatedTrainer.pokemonTeam
+                }
+            }
+
+            # Check which run parameter has been updated
+            for parameterName, parameterValue in currentRunData.items():
+                if (runsDict["runs"][currentRunId]["runData"][parameterName] != parameterValue):
+                    runBuffer["runs"][currentRunId]["runDataToUpdate"][parameterName] = parameterValue
+
+            # If runEnd date was set and runData has been updated : continue run
+            if (runsDict["runs"][currentRunId]["runData"]["runEnd"] and runBuffer["runs"][currentRunId]["runDataToUpdate"]):
+
+                # We continued a run : remove current run end date
+                currentRunData["runEnd"] = ""
+                runBuffer["runs"][currentRunId]["runDataToUpdate"]["runEnd"] = ""
+                
+                # We continued a run : update old run end date
+                updateOldRunsEndDate(currentRunId, datetime.now().strftime("%d/%m/%Y %H:%M"))
+
+            # Save current run data
+            runsDict["runs"][currentRunId]["runData"] = currentRunData
+
+            # Save current run pokemon data
+            for zone, pokemon in pokemonDataZone.items():
+                if (pokemon): runsDict["runs"][currentRunId]["pokemonData"][zone] = pokemon.getSimplifiedData()
+
+            # Sort runs by runNumber desc and Pokémon list by zone
+            runsDict["runs"] = sortRuns(runsDict["runs"])
+            runsDict["runs"][currentRunId]["pokemonData"] = sortPokemon(runsDict["runs"][currentRunId]["pokemonData"])
+            runBuffer["runs"][currentRunId]["pokemonToUpdate"] = sortPokemon(runBuffer["runs"][currentRunId]["pokemonToUpdate"])
+
+            # Save runsHistory.json
+            file.saveRuns(runsDict)
+
+
+def uploadRunBuffer():
+    global runBuffer
+
+    filteredDataToUpload = {"runs": {}}
+    newData = False
+
+    # Iterate over each updated run
+    for runId, bufferData in runBuffer["runs"].items():
+        runNumber = runsDict["runs"][runId]["runData"]["runNumber"]
+
+        # Only upload data for runs that reached tracking zones
+        if (runNumber > 0 and (bufferData["pokemonToUpdate"] or bufferData["runDataToUpdate"])):
+            newData = True
+
+            # Populate filteredDataToUpload with data to update
+            filteredDataToUpload["runs"][runId] = {"runData": {}, "pokemonData": {}}
+            filteredDataToUpload["runs"][runId]["pokemonData"] = bufferData["pokemonToUpdate"]
+            filteredDataToUpload["runs"][runId]["runData"] = bufferData["runDataToUpdate"]
+
+            if ("runNumber" not in filteredDataToUpload["runs"][runId]["runData"]):
+                filteredDataToUpload["runs"][runId]["runData"]["runNumber"] = runNumber
+
+
+    # Call RunAndBunStats API to update Google Sheets runs file
+    if (newData):
         
-        # Create unique runId from Route 101-102-103 encounters PIDs
-        runId = pokemonDataZone["Route 101"].pid + "-" + pokemonDataZone["Route 102"].pid + "-" + pokemonDataZone["Route 103"].pid
-        runsDict = file.loadRunDict(runId)
+        # Populate filteredDataToUpload with number of runs and list of new runs
+        filteredDataToUpload["newRuns"] = runBuffer["newRuns"]
+        filteredDataToUpload["numberOfRuns"] = getNumberOfRuns()
 
-        # Populate currentRun object with runs.json file data
-        currentRun = {}
-        for zone, pokemonData in runsDict["runs"][runId].items():
-            currentRun[zone] = PokemonFullData(*pokemonData)
-        
-        # Iterate over all zones from emulator data
-        for zone, pokemon in pokemonDataZone.items():
+        # Send updated data to RunAndBunStats API
+        sendRunData(filteredDataToUpload)
 
-            # Released Pokémon : remove it from Sheets
-            if (pokemon == None and zone in currentRun):
-                pokemonToUpdate[zone] = None
-                del runsDict["runs"][runId][zone]
+    # Reset runBuffer
+    runBuffer = {"runs": {}, "newRuns": []}
 
-            # New or updated Pokémon : save it in Sheets
-            if (pokemon and (zone not in currentRun or currentRun[zone] != pokemon)):
-                pokemonToUpdate[zone] = pokemon
 
-        # Populate runs.json
-        for zone, pokemon in pokemonDataZone.items():
-            if (pokemon): runsDict["runs"][runId][zone] = pokemon.getSimplifiedData()
-        file.saveRuns(runsDict)
 
-        # Call RunAndBunStats API to update Google Sheets runs file
-        if (len(pokemonToUpdate) > 0):
-            sendPokemonData("updatePokemonCards", pokemonToUpdate)
+def sortRuns(runs):
+    return dict(sorted(
+        runs.items(),
+        key = lambda item: item[1]["runData"]["runNumber"],
+        reverse = True
+    ))
+
+def sortPokemon(pokemonDict):
+    return dict(sorted(
+        pokemonDict.items(),
+        key = lambda item: ZONE_ORDER.index(item[0]) if item[0] in ZONE_ORDER else len(ZONE_ORDER)
+    ))
+
+# Runs are sorted by runNumber desc, so just retrieve the first one
+def getNumberOfRuns():
+    topRun = next(iter(runsDict["runs"].values()))
+    return topRun["runData"]["runNumber"] if topRun["runData"]["runNumber"] > 0 else 0
 
 
 # Retrieve zone name from zoneId
@@ -522,6 +732,8 @@ def pickBestZones(zoneDict):
 # Main loop
 def mainLoop():
     global LEVELUP_CLOCK # global LEVELUP_CLOCK to alternate between up and down level up sprite position every second
+    global BUFFER_UPLOAD_CLOCK
+    global runBuffer
     os.makedirs(OUTPUT_FOLDER, exist_ok = True) # Create outputImage folder is not exists
     os.makedirs(TEMPOUTPUT_FOLDER, exist_ok = True) # Create .tmp folder is not exists
     subprocess.run(["attrib", "+h", TEMPOUTPUT_FOLDER], shell = True)
@@ -529,6 +741,7 @@ def mainLoop():
 
     boxClock = 0 # Alternate between every box every 5 seconds
     boxNumber = 0 # Track which box we're currently displaying
+    BUFFER_UPLOAD_CLOCK = 0 # Upload all data retrieved in a minute to Google Sheets API
 
     while True:
         try:
@@ -570,28 +783,38 @@ def mainLoop():
 
                     elif line.startswith("FULLDATA"):
                         fullDataLine = parseLine(line)
-                        # initRun()
-                        uploadPokemonData(fullDataLine)
-                        return "Test"
 
                 # Process trainers data to generate next trainer card and retrieve current level cap
-                levelCap = processDefeatedTrainers(defeatedTrainers, pickedStarter)
+                levelCap, wonBattles, gymBadges, lastDefeatedTrainer = processDefeatedTrainers(defeatedTrainers, pickedStarter)
 
                 # Create png images from parsed data
                 generatePlayerPartyImage("party", partyLine, 6, 1, levelCap)
                 generatePlayerPartyImage("box", boxLine, 6, 5, levelCap)
                 generatePlayerPartyImage("dead", deadLine, 6, 5)
-                
-                        
+
+                # Track every update performed in-game (new battle, level up, )
+                updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer)
+            
+                # Once every minute, upload buffer to RunAndBunStats API
+                if (BUFFER_UPLOAD_CLOCK == 0):
+                    uploadRunBuffer()
+            
             # Check file every second
             time.sleep(1)
-            LEVELUP_CLOCK = (LEVELUP_CLOCK + 1) % 1 # Every second
+            LEVELUP_CLOCK = 1 - LEVELUP_CLOCK # Two positions
+            BUFFER_UPLOAD_CLOCK = (BUFFER_UPLOAD_CLOCK + 1) % BUFFER_UPLOAD_FREQUENCY # Every 60 seconds
             boxClock = (boxClock + 1) % boxDisplayTime # Every 5 seconds by default, customizable
         
         # Don't stop script if an error occurs, just print it in the logs
         except Exception as e:
             print("An error occurred :", e)
 
+
+# Upload buffer before exiting program
+def onExit(event):
+    uploadRunBuffer()
+    return False
+win32api.SetConsoleCtrlHandler(onExit, True)
 
 # Start script
 if __name__ == "__main__":
