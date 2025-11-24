@@ -78,7 +78,7 @@ MOVES_IMAGE_HEIGHT = 250
 
 # Retrieve runsHistory.json content once on startup
 runsDict = file.loadAllRuns()
-runBuffer = {"runs": {}, "newRuns": []}
+runBuffer = {"runs": {}}
 
 class PokemonData:
     def __init__(self, pokedexId, level, itemId):
@@ -495,14 +495,16 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
 
 
 # Send data to RunAndBunStats API
-def sendRunData(updatedData):
+def sendRunData(updatedData, fullData):
     keys = file.loadKeys()
 
     # Only send data with valid keys
     if (keys):
         jsonData = json.dumps({
             "keys": keys["spreadsheet"],
-            "updatedData": updatedData
+            "updatedData": updatedData,
+            "fullData": fullData,
+            "lang": getLang()
         }, default = lambda o: o.__dict__)
 
         # Send keys and updatedData to RunAndBunStats API
@@ -665,9 +667,6 @@ def updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer):
             if (runNumber == -1 and trackRun):
                 runNumber = getNumberOfRuns() + 1
 
-                # Set this run as a new run so it can be initialised on Google Sheets
-                runBuffer["newRuns"].append(currentRunId)
-
                 # Include all run data from the run in the buffer
                 runBuffer["runs"][currentRunId]["runDataToUpdate"] = runsDict["runs"][currentRunId]["runData"]
 
@@ -724,7 +723,8 @@ def updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer):
 def uploadRunBuffer():
     global runBuffer
 
-    filteredDataToUpload = {"runs": {}}
+    updatedData = {"runs": {}}
+    fullData = {"runs": {}}
     newData = False
 
     # Iterate over each updated run
@@ -735,27 +735,25 @@ def uploadRunBuffer():
         if (runNumber > 0 and (bufferData["pokemonToUpdate"] or bufferData["runDataToUpdate"])):
             newData = True
 
-            # Populate filteredDataToUpload with data to update
-            filteredDataToUpload["runs"][runId] = {"runData": {}, "pokemonData": {}}
-            filteredDataToUpload["runs"][runId]["pokemonData"] = bufferData["pokemonToUpdate"]
-            filteredDataToUpload["runs"][runId]["runData"] = bufferData["runDataToUpdate"]
+            # Populate updatedData with data to update
+            updatedData["runs"][runId] = {"runData": {}, "pokemonData": {}}
+            updatedData["runs"][runId]["pokemonData"] = bufferData["pokemonToUpdate"]
+            updatedData["runs"][runId]["runData"] = bufferData["runDataToUpdate"]
 
-            if ("runNumber" not in filteredDataToUpload["runs"][runId]["runData"]):
-                filteredDataToUpload["runs"][runId]["runData"]["runNumber"] = runNumber
+            # Populate fullData with full runs data
+            fullData["runs"][runId] = {"runData": {}, "pokemonData": {}}
+            fullData["runs"][runId]["runData"] = runsDict["runs"][runId]["runData"]
+            fullData["runs"][runId]["pokemonData"] = {zone: PokemonFullData(*pokemonData) for zone, pokemonData in runsDict["runs"][runId]["pokemonData"].items()}
 
 
     # Call RunAndBunStats API to update Google Sheets runs file
     if (newData):
-        
-        # Populate filteredDataToUpload with number of runs and list of new runs
-        filteredDataToUpload["newRuns"] = runBuffer["newRuns"]
-        filteredDataToUpload["numberOfRuns"] = getNumberOfRuns()
 
         # Send updated data to RunAndBunStats API
-        sendRunData(filteredDataToUpload)
+        sendRunData(updatedData, fullData)
 
     # Reset runBuffer
-    runBuffer = {"runs": {}, "newRuns": []}
+    runBuffer = {"runs": {}}
 
 
 
