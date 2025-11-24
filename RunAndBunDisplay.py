@@ -835,6 +835,7 @@ def mainLoop():
     print("Run&BunDisplay en cours d'exécution...") # Notify user when ready to use
 
     boxClock = 0 # Alternate between every box every 5 seconds
+    boxDisplayTime = 5 # Default : 5 seconds
     boxNumber = 0 # Track which box we're currently displaying
     BUFFER_UPLOAD_CLOCK = 0 # Upload all data retrieved in a minute to Google Sheets API
 
