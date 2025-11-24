@@ -11,7 +11,16 @@ local partyMonSize = 100
 local partyloc = 0x2023a98 --gPlayerParty
 local partyCount = 0x2023a95 --gPlayerPartyCount
 local storageLoc = 0x2028848 -- gPokemonStorage
-local speciesNameTable = 0x3185c8
+local opponentAddress = 0x02023CF0
+local activeOpponentAddress = 0x020233E8
+local activeSecondOpponentAddress = 0x020233EC
+
+local inBattleAddress = 0x02023A10
+local battleFlagsAddress = 0x02023364
+local partyBuffsAddress = 0x02023415
+local secondPartyBuffsAddress = 0x020234CD
+local opponentBuffsAddress = 0x02023471
+local secondOpponentBuffsAddress = 0x02023529
 
 local defeatedTrainersStart = 0X020262DD
 local defeatedTrainersEnd = 0x020263ED
@@ -88,6 +97,37 @@ function getNature(mon)
 		return nature[(mon.personality % 25)+1]
 	end
 	return nature[mon.hiddenNature+1]
+end
+
+function getStatBuffs(pokemonAddress)
+	buffs = ""
+
+	-- Retrieve each stat buff
+	for i = 0, 6 do
+		buffs = buffs .. "|" .. emu:read8(pokemonAddress + i)
+	end
+
+	return buffs
+end
+
+function getOpponentMoves(activeOpponentAddress)
+	moves = ""
+
+	-- Retrieve activeOpponentId to get the current opponent Pokémon
+	activeOpponentId = emu:read8(activeOpponentAddress)
+
+	-- Retrieve current opponent data
+	opponentPokemon = readPartyMon(opponentAddress + partyMonSize * activeOpponentId)
+
+	-- Read opponent Pokémon moves and PP
+	if (opponentPokemon.species > 0 and opponentPokemon.hp > 0) then
+		moves = moves .. "|" .. opponentPokemon.moves[1] .. "¤" .. opponentPokemon.pp[1]
+					  .. "|" .. opponentPokemon.moves[2] .. "¤" .. opponentPokemon.pp[2]
+					  .. "|" .. opponentPokemon.moves[3] .. "¤" .. opponentPokemon.pp[3]
+					  .. "|" .. opponentPokemon.moves[4] .. "¤" .. opponentPokemon.pp[4]
+	end
+
+	return moves
 end
 
 function toString(rawstring)
@@ -295,6 +335,9 @@ function updateBuffer()
         local partyPokemon = "PARTY"
         local boxPokemon = "BOX"
         local deadPokemon = "DEAD"
+		local partyBuffs = "PARTYBUFFS"
+		local opponentBuffs = "OPPONENTBUFFS"
+		local opponentMoves = "OPPONENTMOVES"
 		local defeatedTrainers = "TRAINERS"
 		local pickedStarter = "STARTER|" .. emu:read16(pickedStarterAddress)
 		local teamFullData = "FULLDATA"
@@ -354,6 +397,20 @@ function updateBuffer()
 			defeatedTrainers = defeatedTrainers .. "|" .. emu:read8(trainerAddress)
 		end
 
+		-- If in battle, retrieve party/opponent buffs and PP left
+		if emu:read32(inBattleAddress) ~= 0 then
+
+			-- Last bit in battle flags is double battle flag
+			isDoubleBattle = emu:read32(battleFlagsAddress) % 2 == 1
+
+			-- Retrieve all opponents moves and PP
+			opponentMoves = opponentMoves .. getOpponentMoves(activeOpponentAddress) .. (isDoubleBattle and getOpponentMoves(activeSecondOpponentAddress) or "")
+
+			-- Retrieve all buffs/debuffs
+			opponentBuffs = opponentBuffs .. getStatBuffs(opponentBuffsAddress) .. (isDoubleBattle and getStatBuffs(secondOpponentBuffsAddress) or "")
+			partyBuffs = partyBuffs .. getStatBuffs(partyBuffsAddress) .. (isDoubleBattle and getStatBuffs(secondPartyBuffsAddress) or "")
+		end
+
 		-- Retrieve pokemonData.txt path from env variable defined by Python script
 		local dataFilePath = os.getenv("RUNANDBUNREADER_CONFFILE")
 
@@ -362,7 +419,7 @@ function updateBuffer()
 			local f = io.open(dataFilePath, "w")
 
 			if f then
-				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. teamFullData .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter)
+				f:write(partyPokemon .. "\n" .. boxPokemon .. "\n" .. deadPokemon .. "\n" .. teamFullData .. "\n" .. partyBuffs .. "\n" .. opponentBuffs .. "\n" .. opponentMoves .. "\n" .. defeatedTrainers .. "\n" .. pickedStarter)
 				f:close()
 			else
 				displayBuffer:print("Cannot write pokemon data\n")

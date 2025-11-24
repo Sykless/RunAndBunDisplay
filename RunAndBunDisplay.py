@@ -7,10 +7,10 @@ import time
 import win32api
 import requests
 import subprocess
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageDraw, ImageFont
 from datetime import datetime
 
-from data import LEVEL_CAPS, PETALBURG_GYM_SAMELEVELS, TRAINER_RIVAL, MOVE_NAMES, POKEMON_NAMES, ZONE_NAMES, FULLDATA_ZONE, ZONE_ORDER
+from data import LEVEL_CAPS, PETALBURG_GYM_SAMELEVELS, TRAINER_RIVAL, MOVE_NAMES, POKEMON_NAMES, STATS_NAMES, ABILITIES_DICO_FR, NATURES_DICO_FR, ZONE_NAMES, FULLDATA_ZONE, ZONE_ORDER
 from trainer import TRAINER_ADDRESS_DICT, TRAINERLIST
 from file import TEMPOUTPUT_FOLDER, OUTPUT_FOLDER
 
@@ -23,6 +23,7 @@ FATEFUL_ENCOUNTER = 255
 
 TRAINERS_START = 0X020262DD
 
+POKEMON_FONT = "pokemon-gen-4-regular.ttf"
 INPUT_FILE = "pokemonData.txt"
 SPRITE_FOLDER = "sprites"
 POKEMONSPRITE_FOLDER = SPRITE_FOLDER + "/pokemon"
@@ -68,6 +69,12 @@ TRAINER_ITEMS_SPRITE_SIZE = 64
 
 TRAINER_ITEM_X_POSITION = 84
 TRAINER_ITEM_Y_POSITION = 56
+
+BUFF_IMAGE_WIDTH = 400
+BUFF_IMAGE_HEIGHT = 450
+
+MOVES_IMAGE_WIDTH = 600
+MOVES_IMAGE_HEIGHT = 250
 
 # Retrieve runsHistory.json content once on startup
 runsDict = file.loadAllRuns()
@@ -153,6 +160,10 @@ def parseLine(line):
         # No "¤" in line : raw data, add it directly
         elif ("¤" not in pokemonData):
             parsedLine.append(pokemonData)
+
+        # Opponent moves : store split raw data
+        elif (dataType == "OPPONENTMOVES"):
+            parsedLine.append(pokemonData.split("¤"))
 
         # Full data, store it in a PokemonFullData object
         elif (dataType == "FULLDATA"):
@@ -321,6 +332,85 @@ def generateTrainerCard(trainer):
     # Save image in output folder
     file.safeWriteFile(outputImage, "trainer")
 
+
+def generateMovesImage(fileName, moveList):
+    lang = getLang()
+
+    ppImage = Image.new("RGBA", (MOVES_IMAGE_WIDTH, MOVES_IMAGE_HEIGHT), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(ppImage)
+    font = ImageFont.truetype(POKEMON_FONT, 40)
+
+    # Generate an image with each move and remaining PP
+    for i in range(len(moveList)):
+        moveId, ppLeft = int(moveList[i][0]), moveList[i][1]
+
+        if (moveId):
+            draw.text(
+                (20, 8 + i * (60)),
+                f"PP {MOVE_NAMES[lang][moveId]} : {ppLeft}",
+                font = font,
+                fill = (255,255,255,255),
+                stroke_fill = (0,0,0,255),
+                stroke_width = 5
+            )
+
+    # Save image in output folder
+    file.safeWriteFile(ppImage, fileName)
+
+
+def generateBuffsImage(fileName, buffsList):
+    lang = getLang()
+    statId = 0
+
+    buffImage = Image.new("RGBA", (BUFF_IMAGE_WIDTH, BUFF_IMAGE_HEIGHT), (0,0,0,0))
+    draw = ImageDraw.Draw(buffImage)
+    font = ImageFont.truetype(POKEMON_FONT, 40)
+
+    buffSprite = Image.open(os.path.join(MISCSPRITE_FOLDER, "buff.png")).convert("RGBA")
+    debuffSprite = Image.open(os.path.join(MISCSPRITE_FOLDER, "debuff.png")).convert("RGBA")
+
+    # Move Speed buff from 3rd to 5th position
+    if (buffsList):
+        speedBuff = buffsList.pop(2)
+        buffsList.insert(4, speedBuff)
+
+    # Generate an image with each buff/debuff
+    for i in range(len(buffsList)):
+        statLevel = int(buffsList[i])
+
+        # 6 is default stat level, higher is buff and lower is debuff
+        if (statLevel != 6):
+            draw.text(
+                (20, 8 + statId * (60)),
+                f"{STATS_NAMES[lang][i]}",
+                font = font,
+                fill = (255,255,255,255),
+                stroke_fill = (0,0,0,255),
+                stroke_width = 5
+            )
+
+            # Lower than 6 : debuff
+            if (0 <= statLevel < 6):
+                buffLevel = 6 - statLevel
+                sprite = debuffSprite
+
+            # Higher than 6 : buff
+            elif (6 < statLevel <= 12):
+                buffLevel = statLevel - 6
+                sprite = buffSprite
+
+            # Default : no buff/debuff
+            else:
+                buffLevel = 0
+
+            # Generate a blue (debuff) or red (buff) triangle for each buff level
+            for buffId in range(buffLevel):
+                buffImage.paste(sprite, (100 + 47 * buffId, 18 + statId * (60)), sprite)
+
+            statId += 1
+
+    # Save image in output folder
+    file.safeWriteFile(buffImage, fileName)
 
 
 # Retrieve trainer data to determine who has been beaten and who is next
@@ -765,10 +855,7 @@ def mainLoop():
 
                 # Retrieve each line and parse its data
                 for line in lines:
-                    if line.startswith("PARTY"):
-                        partyLine = parseLine(line)
-                        
-                    elif line.startswith("BOX"):
+                    if line.startswith("BOX"):
                         fullBox = parseLine(line)
                         numberOfBoxes = int(len(fullBox) / 30) if fullBox else 1
 
@@ -781,6 +868,18 @@ def mainLoop():
                         
                     elif line.startswith("DEAD"):
                         deadLine = parseLine(line)
+
+                    elif line.startswith("PARTYBUFFS"):
+                        partyBuffs = parseLine(line)
+
+                    elif line.startswith("OPPONENTBUFFS"):
+                        opponentBuffs = parseLine(line)
+
+                    elif line.startswith("OPPONENTMOVES"):
+                        opponentMoves = parseLine(line)
+                    
+                    elif line.startswith("PARTY"):
+                        partyLine = parseLine(line)
 
                     elif line.startswith("TRAINERS"):
                         defeatedTrainers = parseLine(line)
@@ -798,6 +897,16 @@ def mainLoop():
                 generatePlayerPartyImage("party", partyLine, 6, 1, levelCap)
                 generatePlayerPartyImage("box", boxLine, 6, 5, levelCap)
                 generatePlayerPartyImage("dead", deadLine, 6, 5)
+
+                # Generate opponent moves and PP left if in battle
+                generateMovesImage("moves-opponent-1", opponentMoves[:4])
+                generateMovesImage("moves-opponent-2", opponentMoves[4:])
+
+                # Generate buffs/debuffs for player and opponent in battle
+                generateBuffsImage("buffs-opponent-1", opponentBuffs[:7])
+                generateBuffsImage("buffs-opponent-2", opponentBuffs[7:])
+                generateBuffsImage("buffs-player-1", partyBuffs[:7])
+                generateBuffsImage("buffs-player-2", partyBuffs[7:])
 
                 # Track every update performed in-game (new battle, level up, )
                 updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer)
