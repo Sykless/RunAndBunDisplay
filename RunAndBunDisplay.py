@@ -38,6 +38,7 @@ DISPLAY_TRAINER_BACKGROUND = "DISPLAY_TRAINER_BACKGROUND"
 DISPLAY_MULTIPLE_BOXES = "DISPLAY_MULTIPLE_BOXES"
 BOX_DISPLAY_TIME = "BOX_DISPLAY_TIME"
 ZONE_START_RUN_TRACKING = "ZONE_START_RUN_TRACKING"
+LANG = "LANG"
 
 ZONES_START_TRACKING = [
     ["Route 101"],
@@ -86,17 +87,19 @@ class PokemonData:
 
 class PokemonFullData:
     def __init__(self, pid, pokedexId, nickname, zoneId, level, ability, nature, move1, move2, move3, move4, hpIV, attackIV, defenseIV, spAttackIV, spDefenseIV, speedIV, alive):
+        lang = getLang()
+
         self.pid = pid
         self.pokedexId = int(pokedexId)
-        self.pokemonName = POKEMON_NAMES[self.pokedexId]
+        self.pokemonName = POKEMON_NAMES[lang][self.pokedexId]
         self.nickname = nickname
         self.zoneId = zoneId
         self.zone = getLocation(int(zoneId), self.pokedexId)
         self.level = level
-        self.ability = ability
-        self.nature = nature
+        self.ability = ability if lang == "EN" or ability not in ABILITIES_DICO_FR else ABILITIES_DICO_FR[ability]
+        self.nature = nature if lang == "EN" or nature not in NATURES_DICO_FR else NATURES_DICO_FR[nature]
         self.movesId = [int(move1), int(move2), int(move3), int(move4)]
-        self.moves = [MOVE_NAMES[self.movesId[0]], MOVE_NAMES[self.movesId[1]], MOVE_NAMES[self.movesId[2]], MOVE_NAMES[self.movesId[3]]]
+        self.moves = [MOVE_NAMES[lang][self.movesId[0]], MOVE_NAMES[lang][self.movesId[1]], MOVE_NAMES[lang][self.movesId[2]], MOVE_NAMES[lang][self.movesId[3]]]
         self.IVs = [hpIV, attackIV, defenseIV, spAttackIV, spDefenseIV, speedIV]
         self.alive = int(alive)
 
@@ -108,7 +111,7 @@ class PokemonFullData:
                 and self.ability == pokemon.ability and self.nature == pokemon.nature and self.moves == pokemon.moves and self.IVs == pokemon.IVs and self.alive == pokemon.alive)
 
     def __str__(self):
-        return f'{self.pid} - {self.nickname} ({POKEMON_NAMES[self.pokedexId]}) - lvl {self.level} - {self.zone} - {self.ability} - {self.nature} - {"/".join(self.moves)} - {"/".join(self.IVs)}{("" if self.alive else " - 💀")}'
+        return f'{self.pid} - {self.nickname} ({POKEMON_NAMES[getLang()][self.pokedexId]}) - lvl {self.level} - {self.zone} - {self.ability} - {self.nature} - {"/".join(self.moves)} - {"/".join(self.IVs)}{("" if self.alive else " - 💀")}'
 
     def __repr__(self):
         return "\n\t" + str(self) + "\n"
@@ -129,6 +132,10 @@ def ensureSetup():
     confFilePath = os.path.join(ownPath, INPUT_FILE)
     os.system(f'setx RUNANDBUNREADER_CONFFILE "{confFilePath}"')
 
+
+def getLang():
+    configuration = file.readConfFile()
+    return configuration[LANG] if configuration[LANG] in ["EN","FR"] else "EN"
 
 
 # Parse PARTY|1¤10¤1|2¤25¤2|3¤3¤0 style lines into Pokémon data

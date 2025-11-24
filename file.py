@@ -43,7 +43,7 @@ def readConfFile():
     for line in configurationFile.splitlines():
         if (line.count("=") == 1):
             configurationSplit = line.split("=")
-            configuration[configurationSplit[0]] = int(configurationSplit[1])
+            configuration[configurationSplit[0]] = int(configurationSplit[1]) if configurationSplit[1].isnumeric() else configurationSplit[1]
 
     return configuration
 
