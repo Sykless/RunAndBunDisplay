@@ -3,9 +3,11 @@
 .vscode/
 outputImage/
 dist/
+build/
 
 pokemonData.txt
 runsHistory.json
+RunAndBunDisplay.spec
 
 *.toc
 *.zip
