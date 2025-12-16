@@ -12,6 +12,9 @@ DISPLAY_TRAINER_BACKGROUND=1
 DISPLAY_MULTIPLE_BOXES=1
 BOX_DISPLAY_TIME=5
 
+-- Custom Dead box size (default 6x5 : 6 columns / 5 lines)
+DEAD_BOX_SIZE=6x5
+
 -- Display optional routes trainers
 OPTIONAL_ROUTE_123=1
 OPTIONAL_METEOR_FALLS=1

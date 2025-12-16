@@ -38,6 +38,7 @@ DISPLAY_TRAINER_ITEMS = "DISPLAY_TRAINER_ITEMS"
 DISPLAY_TRAINER_BACKGROUND = "DISPLAY_TRAINER_BACKGROUND"
 DISPLAY_MULTIPLE_BOXES = "DISPLAY_MULTIPLE_BOXES"
 BOX_DISPLAY_TIME = "BOX_DISPLAY_TIME"
+DEAD_BOX_SIZE = "DEAD_BOX_SIZE"
 OPTIONAL_ROUTE_123 = "OPTIONAL_ROUTE_123"
 OPTIONAL_METEOR_FALLS = "OPTIONAL_METEOR_FALLS"
 OPTIONAL_ROUTE_115 = "OPTIONAL_ROUTE_115"
@@ -185,10 +186,14 @@ def parseLine(line):
 
 
 # Create images from Pokémon sprites
-def generatePlayerPartyImage(label, pokemonList, columnNumber, rowNumber, levelCap = None):
+def generatePlayerPartyImage(label, pokemonList, columnNumber, rowNumber, levelCap = None, customSize = None):
 
     # Retrieve conf file content to check user preferences
     configuration = file.readConfFile()
+
+    # Remove None Pokemon for custom sizes
+    if (customSize):
+        pokemonList = [pokemonData for pokemonData in pokemonList if pokemonData]
 
     # Initialise transparent image
     imageWidth = POKEMON_SPRITE_WIDTH * columnNumber + SPACING_X * (columnNumber - 1)
@@ -893,6 +898,14 @@ def mainLoop():
                 configuration = file.readConfFile()
                 displayMultipleBoxes = configuration[DISPLAY_MULTIPLE_BOXES]
                 boxDisplayTime = configuration[BOX_DISPLAY_TIME]
+                deadBoxSize = str(configuration[DEAD_BOX_SIZE])
+
+                # Setup dead box custom size
+                if ("X" in deadBoxSize.upper()):
+                    columnNumber, rowNumber = deadBoxSize.upper().split("X")
+                    columnNumber, rowNumber = (int(columnNumber), int(rowNumber)) if columnNumber.isnumeric() and rowNumber.isnumeric() else (6,5)
+                else:
+                    columnNumber, rowNumber = (6,5)
 
                 # Retrieve each line and parse its data
                 for line in lines:
@@ -935,9 +948,9 @@ def mainLoop():
                 levelCap, wonBattles, gymBadges, lastDefeatedTrainer = processDefeatedTrainers(defeatedTrainers, pickedStarter)
 
                 # Create png images from parsed data
-                generatePlayerPartyImage("party", partyLine, 6, 1, levelCap)
-                generatePlayerPartyImage("box", boxLine, 6, 5, levelCap)
-                generatePlayerPartyImage("dead", deadLine, 6, 5)
+                generatePlayerPartyImage("party", partyLine, 6, 1, levelCap = levelCap)
+                generatePlayerPartyImage("box", boxLine, 6, 5, levelCap = levelCap)
+                generatePlayerPartyImage("dead", deadLine, columnNumber, rowNumber, customSize = True)
 
                 # Generate opponent moves and PP left if in battle
                 generateMovesImage("moves-opponent-1", opponentMoves[:4])

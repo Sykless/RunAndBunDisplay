@@ -354,7 +354,7 @@ function updateBuffer()
 		while i < 420 do
             if alivePokemon then
 				boxPokemon = boxPokemon .. "|"
-			elseif i >= 390 then
+			elseif i >= 360 then
 				deadPokemon = deadPokemon .. "|"
 			end
 
