@@ -8,15 +8,56 @@ class TrainerData:
         self.itemList = itemList
         self.spriteName = spriteName
         self.doubleSpriteName = doubleSpriteName
-
-        # Populate TRAINER_ADDRESS_DICT so we find the trainer with its address
-        TRAINER_ADDRESS_DICT.setdefault(address, {})[bitNumber] = self
+        self.defeated = False
 
     def __str__(self):
         return f'TrainerData("{self.name}", {self.address:#010X}, {self.bitNumber}, [{",".join(str(pokedexId) for pokedexId in self.pokemonTeam)}], "{self.spriteName}")'
 
-# Address -> Bit Number -> Trainer, built during TRAINERLIST initialisation
-TRAINER_ADDRESS_DICT = {}
+OPTIONALS_FIGHTS = {
+    "Route 123": [
+        TrainerData("Pokémaniac Hambino", "Route 123", 0X02026371, 5, [468,105,497,426,858,405], [522,394,481,348,565,445], "TRAINER_PIC_POKEMANIAC"),
+        TrainerData("Cool Trainer Wendy & Cool Trainer Braxton [Double]", "Route 123", 0X02026379, 3, [765,671,666,820,317,143], [573,573,481,573,573,573], "TRAINER_PIC_COOLTRAINER_M", "TRAINER_PIC_COOLTRAINER_F"),
+        TrainerData("Ninja Boy Jonas & Expert Fredrick [Double]", "Route 123", 0X02026373, 5, [468,903,232,866,724,254], [569,569,576,502,502,502], "TRAINER_PIC_EXPERT_M", "TRAINER_PIC_NINJA_BOY"),
+        TrainerData("Hex Maniac Gongas", "Route 123", 0X020263AF, 1, [26,471,277,465,637,80], [481,550,479,503,343,472], "TRAINER_PIC_HEX_MANIAC"),
+        TrainerData("Twins Miu And Yuki [Double]", "Route 123", 0X020263AC, 4, [319,973,576,210,454,994], [481,394,472,528,460,351], "TRAINER_PIC_TWINS"),
+        TrainerData("Psychic Jacki & Bird Keeper Alberto [Double]", "Route 123", 0X02026371, 4, [899,376,308,279,357,6], [479,347,481,341,523,348], "TRAINER_PIC_BIRD_KEEPER", "TRAINER_PIC_PSYCHIC_F"),
+        TrainerData("Black Belt Hawk", "Route 123", 0X02026374, 7, [241,237,553,715,212,750], [555,479,354,348,481,503], "TRAINER_PIC_BLACK_BELT"),
+        TrainerData("Guitarist Fernando & Cool Trainer Jazmyn [Double]", "Route 123", 0X02026388, 3, [1187,784,76,478,826,94], [273,339,576,344,528,481], "TRAINER_PIC_COOLTRAINER_F", "TRAINER_PIC_GUITARIST"),
+        TrainerData("Psychic Cameron & Hex Maniac Kindra [Double]", "Route 123", 0X0202637D, 2, [620,778,828,1225,65,121], [479,356,452,478,479,481], "TRAINER_PIC_HEX_MANIAC", "TRAINER_PIC_PSYCHIC_M"),
+    ],
+    "Meteor Falls": [
+        TrainerData("Old Couple John And Jay [Double]", "Meteor Falls", 0X020263C5, 1, [547,1173,549,36,695,31], [356,481,472,528,339,479], "TRAINER_PIC_OLD_COUPLE"),
+        TrainerData("Dragon Tamer Nicolas", "Meteor Falls", 0X020263A1, 0, [130,844,376,445,1006,944], [552,528,522,472,503,330], "TRAINER_PIC_DRAGON_TAMER"),
+    ],
+    "Route 115": [
+        TrainerData("Triathlete Kyra", "Route 115", 0X020263CD, 4, [777,277,51,1160,516,392], [498,443,481,564,570,479], "TRAINER_PIC_RUNNING_TRIATHLETE_F"),
+        TrainerData("Battle Girl Helene", "Route 115", 0X020263CD, 7, [103,701,625,900,473,815], [576,348,355,479,460,340], "TRAINER_PIC_BATTLE_GIRL"),
+        TrainerData("Ninja Boy Jack", "Route 115", 0X020263CD, 5, [899,571,132,598,352,202], [528,479,459,462,503,472], "TRAINER_PIC_NINJA_BOY"),
+        TrainerData("Psychic Alix", "Route 115", 0X020263CD, 6, [668,389,784,700,184,930], [481,554,522,522,503,316], "TRAINER_PIC_PSYCHIC_F"),
+        TrainerData("Black Belt Koichi", "Route 115", 0X02026386, 6, [233,469,901,257,534,950], [498,443,445,481,345,336], "TRAINER_PIC_BLACK_BELT"),
+        TrainerData("Expert Timothy", "Route 115", 0X02026396, 3, [589,286,241,149,1113,948], [481,345,472,502,354,334], "TRAINER_PIC_EXPERT_M"),
+    ]
+}
+
+ELITE_FOUR_DOUBLE_TEAMS = {
+    "Elite Four Sidney": {
+        "pokemon": [727,982,904,892,491,917],
+        "items": [528,522,503,481,479,303]
+    },
+    "Elite Four Phoebe": {
+        "pokemon": [1008,609,9,792,1071,914],
+        "items": [481,562,528,480,403,300]
+    },
+    "Elite Four Glacia": {
+        "pokemon": [801,740,949,233,1232,1105],
+        "items": [550,481,335,494,344,512]
+    },
+    "Elite Four Drake": {
+        "pokemon": [887,245,718,6,644,942],
+        "items": [481,472,472,479,460,328]
+    }
+}
+
 TRAINERLIST = [
     TrainerData("Youngster Calvin", "Route 102", 0X02026397, 6, [261,506,821], [None,None,None], "TRAINER_PIC_YOUNGSTER"),
     TrainerData("Bug Catcher Rick", "Route 102", 0X020263BC, 7, [736,204,850], [520,520,520], "TRAINER_PIC_BUG_CATCHER"),
@@ -336,12 +377,8 @@ TRAINERLIST = [
     TrainerData("Cool Trainer Halle", "Victory Road", 0X020263B4, 2, [76,776,1141,589,461,932], [576,472,523,503,481,318], "TRAINER_PIC_COOLTRAINER_F"),
     TrainerData("Winstrate Vito Victory Road [Boss]", "Victory Road", 0X0202637A, 2, [876,306,795,91,701,912], [481,576,479,481,452,298], "TRAINER_PIC_COOLTRAINER_M"),
     TrainerData("Elite Four Sidney", "Elite Four Sidney", 0X0202636F, 3, [658,800,34,892,717,917], [481,472,479,566,264,303], "TRAINER_PIC_ELITE_FOUR_SIDNEY"),
-    # TrainerData("Elite Four Sidney Double", "Elite Four Sidney", 0X0202636F, 3, [727,982,904,892,491,917], [528,522,503,481,479,303], "TRAINER_PIC_ELITE_FOUR_SIDNEY"),
     TrainerData("Elite Four Phoebe", "Elite Four Phoebe", 0X0202636F, 4, [169,1003,576,792,802,914], [348,479,503,480,522,300], "TRAINER_PIC_ELITE_FOUR_PHOEBE"),
-    # TrainerData("Elite Four Phoebe Double", "Elite Four Phoebe", 0X0202636F, 4, [1008,609,9,792,1071,914], [481,562,528,480,403,300], "TRAINER_PIC_ELITE_FOUR_PHOEBE"),
     TrainerData("Elite Four Glacia", "Elite Four Glacia", 0X0202636F, 5, [473,949,883,1103,1104,1232], [481,335,344,472,503,576], "TRAINER_PIC_ELITE_FOUR_GLACIA"),
-    # TrainerData("Elite Four Glacia Double", "Elite Four Glacia", 0X0202636F, 5, [801,740,949,233,1232,1105], [550,481,335,494,344,512], "TRAINER_PIC_ELITE_FOUR_GLACIA"),
     TrainerData("Elite Four Drake", "Elite Four Drake", 0X0202636F, 6, [887,342,718,245,643,942], [479,481,563,472,522,328], "TRAINER_PIC_ELITE_FOUR_DRAKE"),
-    # TrainerData("Elite Four Drake Double", "Elite Four Drake", 0X0202636F, 6, [887,245,718,6,644,942], [481,472,472,479,460,328], "TRAINER_PIC_ELITE_FOUR_DRAKE"),
     TrainerData("Champion Wallace [Boss]", "Champion Wallace", 0X02026399, 7, [954,847,1006,484,490,929], [291,442,472,471,472,315], "TRAINER_PIC_CHAMPION_WALLACE")
 ]

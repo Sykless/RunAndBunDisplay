@@ -11,7 +11,7 @@ from PIL import Image, ImageEnhance, ImageDraw, ImageFont
 from datetime import datetime
 
 from data import LEVEL_CAPS, PETALBURG_GYM_SAMELEVELS, TRAINER_RIVAL, MOVE_NAMES, POKEMON_NAMES, STATS_NAMES, ABILITIES_DICO_FR, NATURES_DICO_FR, ZONE_NAMES, FULLDATA_ZONE, ZONE_ORDER
-from trainer import TRAINER_ADDRESS_DICT, TRAINERLIST
+from trainer import TRAINERLIST, OPTIONALS_FIGHTS, ELITE_FOUR_DOUBLE_TEAMS
 from file import TEMPOUTPUT_FOLDER, OUTPUT_FOLDER
 
 LEVELUP_CLOCK = 0
@@ -38,6 +38,13 @@ DISPLAY_TRAINER_ITEMS = "DISPLAY_TRAINER_ITEMS"
 DISPLAY_TRAINER_BACKGROUND = "DISPLAY_TRAINER_BACKGROUND"
 DISPLAY_MULTIPLE_BOXES = "DISPLAY_MULTIPLE_BOXES"
 BOX_DISPLAY_TIME = "BOX_DISPLAY_TIME"
+OPTIONAL_ROUTE_123 = "OPTIONAL_ROUTE_123"
+OPTIONAL_METEOR_FALLS = "OPTIONAL_METEOR_FALLS"
+OPTIONAL_ROUTE_115 = "OPTIONAL_ROUTE_115"
+ELITE_FOUR_SIDNEY_TEAM = "ELITE_FOUR_SIDNEY_TEAM"
+ELITE_FOUR_PHOEBE_TEAM = "ELITE_FOUR_PHOEBE_TEAM"
+ELITE_FOUR_GLACIA_TEAM = "ELITE_FOUR_GLACIA_TEAM"
+ELITE_FOUR_DRAKE_TEAM = "ELITE_FOUR_DRAKE_TEAM"
 ZONE_START_RUN_TRACKING = "ZONE_START_RUN_TRACKING"
 LANG = "LANG"
 
@@ -416,8 +423,11 @@ def generateBuffsImage(fileName, buffsList):
 # Retrieve trainer data to determine who has been beaten and who is next
 def processDefeatedTrainers(defeatedTrainers, pickedStarter):
     nextTrainer = None
+    eliteFourId = 0
     veryNextTrainerId = -1
     lastDefeatedTrainerId = -1
+    trainerAddressDict = {}
+    configuration = file.readConfFile()
 
     # Default level cap is 12 when you start a playthrough
     levelCap = 12
@@ -426,9 +436,34 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
     gymBadges = 0
     wonBattles = 0
 
-    # Set all trainers as undefeated by default
-    for trainer in TRAINERLIST:
-        trainer.defeated = False
+    # Extract original trainer list and add optional fights
+    trainerList = copy.deepcopy(TRAINERLIST)
+    optionalTrainerList = copy.deepcopy(
+        (OPTIONALS_FIGHTS["Route 123"] if configuration[OPTIONAL_ROUTE_123] else []) +
+        (OPTIONALS_FIGHTS["Meteor Falls"] if configuration[OPTIONAL_METEOR_FALLS] else []) +
+        (OPTIONALS_FIGHTS["Route 115"] if configuration[OPTIONAL_ROUTE_115] else [])
+    )
+
+    # Retrieve where elite four starts
+    for trainerId in range(len(trainerList) - 1, -1, -1):
+        if trainerList[trainerId].name == "Elite Four Sidney":
+            eliteFourId = trainerId
+            break
+
+    # Swap Singles with Doubles Elite 4 team
+    for i, eliteFourConf in enumerate([ELITE_FOUR_SIDNEY_TEAM, ELITE_FOUR_PHOEBE_TEAM, ELITE_FOUR_GLACIA_TEAM, ELITE_FOUR_DRAKE_TEAM]):
+        if ("DOUBLE" in configuration[eliteFourConf].upper()):
+            eliteFourTrainer = trainerList[eliteFourId + i]
+            eliteFourTrainer.pokemonTeam = ELITE_FOUR_DOUBLE_TEAMS[eliteFourTrainer.name]["pokemon"]
+            eliteFourTrainer.itemList = ELITE_FOUR_DOUBLE_TEAMS[eliteFourTrainer.name]["items"]
+
+    # Insert optional fights in trainer list
+    if (optionalTrainerList):
+        trainerList = trainerList[:eliteFourId] + optionalTrainerList + trainerList[eliteFourId:]
+
+    # Create Address -> Bit Number -> Trainer dict
+    for trainer in trainerList:
+        trainerAddressDict.setdefault(trainer.address, {})[trainer.bitNumber] = trainer
 
     # Retrieve trainers data from emulator and determine who has been defeated
     for i in range(len(defeatedTrainers)):
@@ -436,15 +471,15 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
         trainerAddress = TRAINERS_START + i
 
         for bitNumber in range(8):
-            if (trainerAddress in TRAINER_ADDRESS_DICT and bitNumber in TRAINER_ADDRESS_DICT[trainerAddress]):
-                TRAINER_ADDRESS_DICT[trainerAddress][bitNumber].defeated = bool((int(trainerData) >> bitNumber) & 1)
+            if (trainerAddress in trainerAddressDict and bitNumber in trainerAddressDict[trainerAddress]):
+                trainerAddressDict[trainerAddress][bitNumber].defeated = bool((int(trainerData) >> bitNumber) & 1)
 
     # Check which trainer is the next needed to defeat
-    for trainerId in range(len(TRAINERLIST)):
-        trainer = TRAINERLIST[trainerId]
+    for trainerId in range(len(trainerList)):
+        trainer = trainerList[trainerId]
 
         # Defeated trainer (Elite Four resets after Wallace is defeated)
-        if (trainer.defeated or "Elite Four" in trainer.name and TRAINERLIST[-1].defeated):
+        if (trainer.defeated or "Elite Four" in trainer.name and trainerList[-1].defeated):
             lastDefeatedTrainerId = trainerId
             wonBattles += 1
 
@@ -455,7 +490,7 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
             # Defeated a trainer in Petalburg Gym : mark all trainers in the same level as defeated
             if ("Room]" in trainer.name):
                 for sameLevelId in PETALBURG_GYM_SAMELEVELS[trainer.name]:
-                    TRAINERLIST[trainerId + sameLevelId].defeated = True
+                    trainerList[trainerId + sameLevelId].defeated = True
 
             # Increase number of badges if a gym leader is defeated, except Leader Tate because only Liza gives the badge
             if (trainer.name.startswith("Leader") and "Tate" not in trainer.name):
@@ -472,25 +507,25 @@ def processDefeatedTrainers(defeatedTrainers, pickedStarter):
                 trainer.itemList = TRAINER_RIVAL[trainer.name][pickedStarter]["itemList"]
 
     # Nominal case : next trainer is the first undefeated trainer
-    nextTrainer = TRAINERLIST[veryNextTrainerId]
+    nextTrainer = trainerList[veryNextTrainerId]
 
     # Particular case : we defeated a trainer in a later zone
     if (veryNextTrainerId < lastDefeatedTrainerId):
-        lastDefeatedTrainer = TRAINERLIST[lastDefeatedTrainerId]
+        lastDefeatedTrainer = trainerList[lastDefeatedTrainerId]
 
         # All trainers have been defeated : hardcode last trainer
-        if (lastDefeatedTrainerId + 1 == len(TRAINERLIST)):
+        if (lastDefeatedTrainerId + 1 == len(trainerList)):
             nextTrainer = lastDefeatedTrainer
 
         # Stay in the same zone as the last defeated trainer if there are still trainers there
-        elif (TRAINERLIST[lastDefeatedTrainerId + 1].zone == lastDefeatedTrainer.zone):
-            nextTrainer = TRAINERLIST[lastDefeatedTrainerId + 1]
+        elif (trainerList[lastDefeatedTrainerId + 1].zone == lastDefeatedTrainer.zone):
+            nextTrainer = trainerList[lastDefeatedTrainerId + 1]
 
     # Generate trainer image
     generateTrainerCard(nextTrainer)
 
     # Save level cap, won battles, gym badges and lastDefeatedTrainer so we can use them for level up sprites and run tracking
-    return levelCap, wonBattles, gymBadges, TRAINERLIST[lastDefeatedTrainerId if lastDefeatedTrainerId >= 0 else 0]
+    return levelCap, wonBattles, gymBadges, trainerList[lastDefeatedTrainerId if lastDefeatedTrainerId >= 0 else 0]
 
 
 
@@ -674,12 +709,19 @@ def updateRunBuffer(fullDataLine, wonBattles, gymBadges, lastDefeatedTrainer):
                 for zone, pokemonData in runsDict["runs"][currentRunId]["pokemonData"].items():
                     runBuffer["runs"][currentRunId]["pokemonToUpdate"][zone] = PokemonFullData(*pokemonData)
 
+            # Determine number of battles from enabled optional battles
+            numberOfBattles = len(TRAINERLIST +
+                (OPTIONALS_FIGHTS["Route 123"] if configuration[OPTIONAL_ROUTE_123] else []) +
+                (OPTIONALS_FIGHTS["Meteor Falls"] if configuration[OPTIONAL_METEOR_FALLS] else []) +
+                (OPTIONALS_FIGHTS["Route 115"] if configuration[OPTIONAL_ROUTE_115] else [])
+            )
+
             # Convert current run data to dict
             currentRunData = {
                 "runNumber": runNumber,
                 "runStart": runStart,
                 "runEnd": runsDict["runs"][currentRunId]["runData"]["runEnd"],
-                "wonBattles": f"{wonBattles}/{len(TRAINERLIST)}",
+                "wonBattles": f"{wonBattles}/{numberOfBattles}",
                 "deadPokemon": f"{deadPokemon}/{totalPokemon}",
                 "gymBadges": gymBadges,
                 "personalBest": {

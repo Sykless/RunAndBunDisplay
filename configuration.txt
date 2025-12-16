@@ -12,6 +12,17 @@ DISPLAY_TRAINER_BACKGROUND=1
 DISPLAY_MULTIPLE_BOXES=1
 BOX_DISPLAY_TIME=5
 
+-- Display optional routes trainers
+OPTIONAL_ROUTE_123=1
+OPTIONAL_METEOR_FALLS=1
+OPTIONAL_ROUTE_115=1
+
+-- Display "Singles" or "Doubles" team on Elite four
+ELITE_FOUR_SIDNEY_TEAM=Singles
+ELITE_FOUR_PHOEBE_TEAM=Singles
+ELITE_FOUR_GLACIA_TEAM=Doubles
+ELITE_FOUR_DRAKE_TEAM=Doubles
+
 -- Set from which zone we start tracking runs in Google Sheets (requires .key file : contact developer) 
 --    0 : Disable run tracking
 --    1 : Starter Pack (Route 101 + Route 102 + Route 103)

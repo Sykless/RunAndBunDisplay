@@ -1657,3 +1657,88 @@ Champion Wallace	Elite Four
 	0x02026399	60 -> E0
 	Kyogre-Primal	Barraskewda	Goodra-Hisui	Palkia	Manaphy	Swampert-Mega	TRAINER_PIC_CHAMPION_WALLACE
 	Blue Orb	Choice Band	Leftovers	Scope Lens	Leftovers	Swampertite
+
+Pokémaniac Hambino	Route 123
+	0X02026371	CF -> EF
+	Togekiss	Marowak	Serperior	Drifblim	Hatterene	Luxray	TRAINER_PIC_POKEMANIAC
+	Lum Berry	Thick Club	Focus Sash	Flying Gem	Babiri Berry	Flame Orb
+
+Cool Trainer Wendy & Cool Trainer Braxton [Double]	Route 123
+	0x02026379	47 -> 4F
+	Oranguru	Florges	Vivillon	Greedent	Swalot	Snorlax	TRAINER_PIC_COOLTRAINER_M
+	Starf Berry	Starf Berry	Focus Sash	Starf Berry	Starf Berry	Starf Berry
+
+Ninja Boy Jonas & Expert Fredrick [Double] 	Route 123
+	0x02026373	DF -> FF
+	Togekiss	Sneasler	Donphan	Mr. Rime	Decidueye	Sceptile	TRAINER_PIC_EXPERT_M
+	Salac Berry	Salac Berry	Custap Berry	Weakness Policy	Weakness Policy	Weakness Policy			
+
+Hex Maniac Gongas 	Route 123
+	0x020263AF	01 -> 03
+	Raichu	Glaceon	Swellow	Tangrowth	Volcarona	Slowbro	TRAINER_PIC_HEX_MANIAC
+	Focus Sash	Occa Berry	Life Orb	Assault Vest	Grass Gem	Leftovers
+
+Twins Miu And Yuki [Double] 	Route 123
+	0x020263AC	0A -> 1A
+	Sharpedo	Marowak-Alola	Gothitelle	Granbull	Toxicroak	Arcanine-Hisui	TRAINER_PIC_TWINS
+	Focus Sash	Thick Club	Leftovers	Iapapa Berry	White Herb	Rock Gem
+
+Psychic Jacki & Bird Keeper Alberto [Double] 	Route 123
+	0x02026371	EF -> FF
+	Wyrdeer	Metagross	Medicham	Pelipper	Tropius	Charizard	TRAINER_PIC_BIRD_KEEPER
+	Life Orb	Ground Gem	Focus Sash	Water Gem	Sitrus Berry	Flying Gem
+
+Black Belt Hawk 	Route 123
+	0x02026374	7F -> FF
+	Miltank	Hitmontop	Krookodile	Noivern	Scizor	Mudsdale	TRAINER_PIC_BLACK_BELT
+	Chople Berry	Life Orb	Dark Gem	Flying Gem	Focus Sash	Assault Vest
+
+Guitarist Fernando & Cool Trainer Jazmyn [Double] 	Route 123
+	0x02026388	17 -> 1F	
+	Silvally-Electric	Kommo-o	Golem	Froslass	Orbeetle	Gengar
+	Electric Memory	Normal Gem	Custap Berry	Ice Gem	Iapapa Berry	Focus Sash	
+
+Psychic Cameron & Hex Maniac Kindra [Double] 	Route 123
+	0x0202637D	38 -> 3C	
+	Mienshao	Mimikyu	Thievul	Indeedee-F	Alakazam	Starmie	TRAINER_PIC_HEX_MANIAC
+	Life Orb	Fairy Gem	Psychic Seed	Light Clay	Life Orb	Focus Sash
+
+Meteor Falls [Optional]	Meteor Falls
+	0x020263C5	00 -> 02
+	Whimsicott	Lycanroc-Midnight	Lilligant	Clefable	Heliolisk	Nidoqueen	TRAINER_PIC_OLD_COUPLE
+	Fairy Gem	Focus Sash	Leftovers	Iapapa Berry	Normal Gem	Life Orb
+
+Dragon Tamer Nicolas 	Meteor Falls
+	0x020263A1	C0 -> C1
+	Gyarados	Sandaconda	Metagross	Garchomp	Goodra-Hisui	Latias-Mega	TRAINER_PIC_DRAGON_TAMER
+	Wacan Berry	Iapapa Berry	Lum Berry	Leftovers	Assault Vest	Latiasite
+
+Triathlete Kyra 	Route 115
+	0x020263CD	0F -> 1F
+	Togedemaru	Swellow	Dugtrio	Gourgeist-Small	Simipour	Infernape	TRAINER_PIC_RUNNING_TRIATHLETE_F
+	Red Card	Choice Specs	Focus Sash	Colbur Berry	Petaya Berry	Life Orb
+
+Battle Girl Helene 	Route 115
+	0x020263CD	1F -> 9F
+	Exeggutor	Hawlucha	Bisharp	Kleavor	Mamoswine	Cinderace	TRAINER_PIC_BATTLE_GIRL
+	Custap Berry	Flying Gem	Steel Gem	Life Orb	White Herb	Fire Gem
+
+Ninja Boy Jack 	Route 115
+	0x020263CD	9F -> BF
+	Wyrdeer	Zoroark	Ditto	Ferrothorn	Kecleon	Wobbuffet	TRAINER_PIC_NINJA_BOY
+	Iapapa Berry	Life Orb	Bright Powder	Quick Claw	Assault Vest	Leftovers
+
+Psychic Alix 	Route 115
+	0x020263CD	BF -> FF
+	Pyroar	Torterra	Kommo-o	Sylveon	Azumarill	Gardevoir-Mega	TRAINER_PIC_PSYCHIC_F
+	Focus Sash	Yache Berry	Lum Berry	Lum Berry	Assault Vest	Gardevoirite
+
+Black Belt Koichi 	Route 115
+	0x02026386	88 -> C8
+	Porygon2	Yanmega	Ursaluna	Blaziken	Conkeldurr	Gallade-Mega	TRAINER_PIC_BLACK_BELT
+	Red Card	Choice Specs	Flame Orb	Focus Sash	Fighting Gem	Galladite
+
+Expert Timothy 	Route 115
+	0x02026396	00 -> 08
+	Escavalier	Breloom	Miltank	Dragonite	Greninja-Ash	Lucario-Mega	TRAINER_PIC_EXPERT_M
+	Focus Sash	Fighting Gem	Leftovers	Weakness Policy	Dark Gem	Lucarionite
